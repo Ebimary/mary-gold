@@ -108,6 +108,9 @@
       el.innerHTML =
         '<h3 class="director-name">' + esc(f.name) + "</h3>" +
         '<p class="director-title-only">' + esc(f.title) + "</p>" +
+        (f.professional_title
+          ? '<p class="director-title-only">' + esc(f.professional_title) + "</p>"
+          : "") +
         '<div class="profile-content">' + md(f.bio) + "</div>";
     });
   }

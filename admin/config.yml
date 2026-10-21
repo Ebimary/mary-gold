@@ -173,6 +173,7 @@ collections:
         fields:
           - { label: Name, name: name, widget: string }
           - { label: Title, name: title, widget: string }
+          - { label: "Professional Title", name: professional_title, widget: string }
           - { label: Photo, name: image, widget: image }
           - { label: "Full Biography (rich text)", name: bio, widget: markdown }
 
