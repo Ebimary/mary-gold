@@ -228,66 +228,154 @@
 
     /* ------------------------------------------------------------------
      * Hero slider
+     *
+     * The CMS renderer (assets/js/pages.js) rewrites .slides-container and
+     * .hero-content with innerHTML as soon as the page JSON arrives. That
+     * throws away the slide elements that were in the page when this script
+     * ran, so the slider must never hold on to them: every lookup is done at
+     * call time and a MutationObserver re-applies the current slide whenever
+     * the CMS replaces the markup. Caching those elements is what left the
+     * hero stuck on the first image while the dots kept moving.
      * ------------------------------------------------------------------ */
     function initHeroSlider() {
-        var slides = document.querySelectorAll('.hero .slide');
-        var contents = document.querySelectorAll('.hero .slide-content');
-        var dots = document.querySelectorAll('.slider-dot');
-        var prevArrow = document.querySelector('.prev-arrow');
-        var nextArrow = document.querySelector('.next-arrow');
-        if (!slides.length) return;
+        var hero = document.querySelector('.hero');
+        if (!hero) return;
+        if (hero.getAttribute('data-slider-ready') === '1') return;
+        hero.setAttribute('data-slider-ready', '1');
+
+        var slidesContainer = hero.querySelector('.slides-container');
+        var contentWrap = hero.querySelector('.hero-content');
+        var dotsWrap = hero.querySelector('.slider-dots');
 
         var current = 0;
         var interval = null;
         var DURATION = 5500;
 
+        /* Always resolve the elements at use time - they can be replaced. */
+        function getSlides() {
+            return slidesContainer ? slidesContainer.querySelectorAll('.slide') : [];
+        }
+        function getContents() {
+            return contentWrap ? contentWrap.querySelectorAll('.slide-content') : [];
+        }
+        function getDots() {
+            return dotsWrap ? dotsWrap.querySelectorAll('.slider-dot') : [];
+        }
+
         function show(index) {
+            var slides = getSlides();
+            if (!slides.length) return;
             if (index < 0) index = slides.length - 1;
             if (index >= slides.length) index = 0;
+
             slides.forEach(function (s) { s.classList.remove('active'); });
-            contents.forEach(function (c) { c.classList.remove('active'); });
-            dots.forEach(function (d) { d.classList.remove('active'); });
+            getContents().forEach(function (c) { c.classList.remove('active'); });
+            getDots().forEach(function (d) { d.classList.remove('active'); });
+
             slides[index].classList.add('active');
+            var contents = getContents();
             if (contents[index]) contents[index].classList.add('active');
+            var dots = getDots();
             if (dots[index]) dots[index].classList.add('active');
             current = index;
         }
 
         function next() { show(current + 1); }
         function prev() { show(current - 1); }
-        function restart() {
+        function stop() {
             clearInterval(interval);
+            interval = null;
+        }
+        function start() {
+            stop();
             interval = setInterval(next, DURATION);
         }
+        function restart() { start(); }
 
-        dots.forEach(function (dot, i) {
-            dot.addEventListener('click', function () { show(i); restart(); });
+        /* The number of slides comes from the CMS while the dots are part of
+           the page markup, so the two are kept in step with each other. */
+        function syncDots() {
+            if (!dotsWrap) return;
+            var slides = getSlides();
+            if (!slides.length) return;
+            if (getDots().length === slides.length) return;
+            dotsWrap.innerHTML = '';
+            slides.forEach(function (s, i) {
+                var dot = document.createElement('div');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('data-index', String(i));
+                dotsWrap.appendChild(dot);
+            });
+        }
+
+        /* Delegated, so it keeps working when the dots are rebuilt. */
+        if (dotsWrap) {
+            dotsWrap.addEventListener('click', function (e) {
+                var dot = e.target.closest ? e.target.closest('.slider-dot') : null;
+                if (!dot || !dotsWrap.contains(dot)) return;
+                var i = parseInt(dot.getAttribute('data-index'), 10);
+                if (isNaN(i)) return;
+                show(i);
+                restart();
+            });
+        }
+
+        hero.addEventListener('click', function (e) {
+            var arrow = e.target.closest ? e.target.closest('.slider-arrow') : null;
+            if (!arrow) return;
+            if (arrow.classList.contains('next-arrow')) { next(); restart(); }
+            else if (arrow.classList.contains('prev-arrow')) { prev(); restart(); }
         });
-        if (nextArrow) nextArrow.addEventListener('click', function () { next(); restart(); });
-        if (prevArrow) prevArrow.addEventListener('click', function () { prev(); restart(); });
 
-        /* Pause on hover for usability */
-        var hero = document.querySelector('.hero');
-        if (hero) {
-            hero.addEventListener('mouseenter', function () { clearInterval(interval); });
-            hero.addEventListener('mouseleave', restart);
+        /* Pause on hover, but only for a real hovering pointer. Touch
+           screens emit emulated mouseenter after a tap, which would
+           otherwise stop the slideshow for good. */
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            hero.addEventListener('mouseenter', stop);
+            hero.addEventListener('mouseleave', start);
+            document.addEventListener('mouseleave', start);
         }
 
         /* Touch swipe support */
         var startX = 0;
-        if (hero) {
-            hero.addEventListener('touchstart', function (e) {
-                startX = e.changedTouches[0].clientX;
-            }, { passive: true });
-            hero.addEventListener('touchend', function (e) {
-                var dx = e.changedTouches[0].clientX - startX;
-                if (Math.abs(dx) > 50) {
-                    dx < 0 ? next() : prev();
-                    restart();
-                }
-            }, { passive: true });
+        var startY = 0;
+        hero.addEventListener('touchstart', function (e) {
+            startX = e.changedTouches[0].clientX;
+            startY = e.changedTouches[0].clientY;
+        }, { passive: true });
+        hero.addEventListener('touchend', function (e) {
+            var dx = e.changedTouches[0].clientX - startX;
+            var dy = e.changedTouches[0].clientY - startY;
+            /* Mostly vertical gestures belong to the page, not the slider. */
+            if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+                dx < 0 ? next() : prev();
+                restart();
+            }
+        }, { passive: true });
+
+        /* Resume when the tab comes back: browsers throttle timers in
+           background tabs and a hover pause can otherwise leave it stuck. */
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) stop();
+            else start();
+        });
+
+        /* The CMS replaces the slide markup after the page JSON loads. The
+           new elements need the active class applied again, otherwise the
+           slideshow keeps updating elements that are no longer in the
+           document and the image never changes. */
+        if (window.MutationObserver) {
+            var reapply = function () {
+                syncDots();
+                show(current);
+            };
+            var observer = new MutationObserver(reapply);
+            if (slidesContainer) observer.observe(slidesContainer, { childList: true });
+            if (contentWrap) observer.observe(contentWrap, { childList: true });
         }
 
+        syncDots();
+        show(current);
         restart();
     }
 
