@@ -6,6 +6,9 @@ backend:
   branch: main
   # Netlify proxies the GitHub OAuth handshake (app_id: netlify is the default).
   base_url: https://api.netlify.com
+  # Pin the site Netlify resolves for OAuth. Keep this on the .netlify.app
+  # domain so adding a custom domain later cannot break the CMS login.
+  site_domain: marygoldtech-ybiytc.netlify.app
 
 # Netlify Identity widget handles login on the public site.
 logo_url: /images/YMAI.png
