@@ -1,6 +1,11 @@
 backend:
-  name: git-gateway
+  name: github
+  # IMPORTANT: replace "your-github-username/mary-gold" with your real
+  # GitHub "<username>/<repo>" path, then push (Netlify auto-deploys it).
+  repo: your-github-username/mary-gold
   branch: main
+  # Netlify proxies the GitHub OAuth handshake (app_id: netlify is the default).
+  base_url: https://api.netlify.com
 
 # Netlify Identity widget handles login on the public site.
 logo_url: /images/YMAI.png

@@ -59,9 +59,9 @@ python3 scripts/dev.py 5000
 
 Open **http://localhost:8000**. Clean URLs work locally too.
 
-> Note: The `/admin` panel needs Netlify Identity (available on the live site).
-> Locally the admin page loads but you cannot log in until it is deployed and
-> Identity is enabled. Use the local preview for the public pages.
+> Note: The `/admin` panel signs in through **GitHub → Netlify OAuth**, so login
+> only works once the site is deployed and the OAuth provider is installed
+> (see step 3 below). Use the local preview for the public pages.
 
 ---
 
@@ -72,11 +72,14 @@ Open **http://localhost:8000**. Clean URLs work locally too.
 
 ### 1. Put the project on GitHub
 ```bash
-git init -b main
-git add .
-git commit -m "Mary Gold site with CMS"
+cd /home/kali/Downloads/mary-ybiytc-web
 git remote add origin https://github.com/<you>/mary-gold.git
 git push -u origin main
+```
+Then set the repo path in the CMS config (one line):
+```bash
+sed -i "s|your-github-username/mary-gold|<your-username>/mary-gold|" admin/config.yml
+git commit -am "Set CMS GitHub repo" && git push
 ```
 
 ### 2. Create the Netlify site
@@ -92,22 +95,31 @@ git push -u origin main
 > netlify deploy --prod
 > ```
 
-### 3. Enable the Admin login (Netlify Identity)
-1. In Netlify: **Site configuration → Identity → Enable Identity**.
-2. Under **Identity → Registration**, set to **Invite only**.
-3. Under **Identity → Services → Git Gateway**, click **Enable Git Gateway**.
-4. Under **Identity → Invite users**, invite your own email
-   (e.g. `onweebi12@gmail.com`).
-5. Open the invite email and set your password.
+### 3. Enable GitHub login for the Admin panel
+The CMS uses the **`github`** backend (`admin/config.yml`), so editors sign in with
+their GitHub account. GitHub requires a server for OAuth, so Netlify proxies it.
 
-> **Note:** Netlify has deprecated Git Gateway. It still works for sites that
-> already have it enabled, but if you hit problems, switch the backend in
-> `admin/config.yml` to `github` and give editors write access to the repo
-> instead (see [Decap backends](https://decapcms.org/docs/choosing-a-backend/)).
+1. **Register a GitHub OAuth app**
+   - Go to https://github.com/settings/developers → **OAuth Apps → New OAuth App**.
+   - **Authorization callback URL**: `https://api.netlify.com/auth/done`
+     (this exact string is required).
+   - Copy the **Client ID** and generate a **Client Secret**.
+
+2. **Install the provider in Netlify**
+   - **Site configuration → Security → OAuth → Authentication Providers → Install Provider**.
+   - Choose **GitHub**, paste the Client ID and Client Secret, save.
+
+3. **Grant access**
+   - Everyone who should use the CMS needs a GitHub account with **push access**
+     to the repo (**Settings → Collaborators** on the repo, or a team/role).
+
+> Netlify Identity is also enabled on the site (it powers the login widget on the
+> public pages) and should be set to **Registration: Invite only** under
+> **Site configuration → Identity**, so nobody can self-register.
 
 ### 4. Log in and edit
 1. Visit `https://marygoldtech-ybiytc.netlify.app/admin/`.
-2. Log in with the email you invited.
+2. Click **Login with GitHub** and authorise the app.
 3. You now have the full admin panel:
    - **Site Settings** — logo, phone, WhatsApp, email, address, socials, footer.
    - **Pages** — Home, About, Programs, Events, Contact text.
@@ -194,3 +206,7 @@ Images uploaded via the CMS are stored in `uploads/`. The site logo is set in
 - The site works **offline / without JS** for the original hard-coded content;
   CMS content loads progressively and replaces it.
 - If the logo is missing, a styled **"Mary Gold"** text fallback is shown.
+- **CMS backend:** `admin/config.yml` uses `backend: name: github`. Change the
+  `repo:` value from `your-github-username/mary-gold` to your real
+  `<username>/<repo>` path — the CMS cannot save until you do. Git Gateway was
+  chosen originally but Netlify has deprecated it.
