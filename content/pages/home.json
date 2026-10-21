@@ -1,0 +1,42 @@
+{
+  "title": "Home",
+  "hero_slides": [
+    {
+      "title": "Developing Future Leaders",
+      "text": "We equip young people with essential leadership skills, confidence, and vision to become transformational leaders in their communities.",
+      "button_text": "Join Leadership Program",
+      "button_link": "/programs#leadership-bootcamps"
+    },
+    {
+      "title": "Transformative Mentorship",
+      "text": "Connecting youth with experienced mentors who provide guidance, support, and career advice to help them reach their full potential.",
+      "button_text": "Become a Mentee",
+      "button_link": "/programs#mentorship-circles"
+    },
+    {
+      "title": "Youth Advocacy & Voice",
+      "text": "Empowering young people to become advocates for issues they care about and driving positive change in their communities.",
+      "button_text": "Join Advocacy Forums",
+      "button_link": "/programs#advocacy-forums"
+    },
+    {
+      "title": "Community Transformation",
+      "text": "Creating lasting impact through youth-led community projects, volunteering, and initiatives that address local challenges.",
+      "button_text": "Start a Project",
+      "button_link": "/programs#community-projects"
+    }
+  ],
+  "about_heading": "About Our Initiative",
+  "about_text_1": "Mary Gold is a non-profit organization dedicated to empowering young people through mentorship, leadership development, and advocacy. We believe every young person has potential, and with the right guidance and support, they can become transformational leaders.",
+  "about_text_2": "Founded in 2015, we have impacted over 10,000 youth across the country, helping them develop the skills, confidence, and mindset needed to succeed in life.",
+  "about_button_text": "Read More About Us",
+  "about_button_link": "/about",
+  "programs_heading": "Our Programs",
+  "programs_subtitle": "Comprehensive initiatives designed to transform youth potential into achievement",
+  "why_heading": "Why Our Work Matters",
+  "why_subtitle": "Youth development is essential for building stronger communities and a brighter future",
+  "testimonials_heading": "What People Say",
+  "testimonials_subtitle": "Hear from our program participants and partners",
+  "cta_heading": "Join Us in Making a Difference",
+  "cta_text": "Whether you're interested in volunteering, partnering with us, or supporting our programs financially, there are many ways to get involved."
+}

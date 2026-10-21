@@ -1,0 +1,24 @@
+{
+  "testimonials": [
+    {
+      "quote": "Mary Gold transformed my life. The mentorship I received gave me the confidence to pursue my dreams and become a leader in my community.",
+      "name": "Sarah Johnson",
+      "role": "Program Participant"
+    },
+    {
+      "quote": "The leadership bootcamp was a turning point for me. I learned skills that helped me land my first job and start giving back.",
+      "name": "Michael Adeyemi",
+      "role": "Program Alumni"
+    },
+    {
+      "quote": "Partnering with Mary Gold has been incredible. Their commitment to youth development is unmatched and the impact is visible.",
+      "name": "Dr. Rebecca Okafor",
+      "role": "Community Partner"
+    },
+    {
+      "quote": "The safe space Mary Gold provides helped me open up about my challenges and find the support I needed to grow.",
+      "name": "Grace Emmanuel",
+      "role": "Program Participant"
+    }
+  ]
+}

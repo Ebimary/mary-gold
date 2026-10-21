@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mary Gold</title>
+    <link rel="canonical" href="https://marygold.org/about">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About Us | Mary Gold">
+    <meta property="og:url" content="https://marygold.org/about">
+    <meta property="og:image" content="https://marygold.org/images/YMAI.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Brand Colors */
+        :root {
+            --primary-blue: #1A2BA8;
+            /* main blue from logo */
+            --blue-light: #3148D4;
+            /* lighter tone for hover */
+            --blue-dark: #0F1E7A;
+            /* darker tone for depth */
+            --accent-pink: #e83e8c;
+            --accent-green: #28a745;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-pink);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--blue-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-pink);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d91a7a;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 90px;
+            /* adjust to your preferred size */
+            width: auto;
+            /* keeps correct aspect ratio */
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-fallback {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-fallback span {
+            color: var(--accent-pink);
+        }
+
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .nav-item {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-pink);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+            list-style: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--bg-light);
+            color: var(--accent-pink);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 43, 168, 0.7), rgba(15, 30, 122, 0.7)), url('/images/img2.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 150px 0 80px;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .breadcrumb li:after {
+            content: '/';
+            position: absolute;
+            right: -15px;
+            top: 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .breadcrumb li:last-child:after {
+            display: none;
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--white);
+        }
+
+        /* About Overview */
+        .about-overview {
+            background-color: var(--bg-light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .mission-box,
+        .vision-box {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .mission-box:hover,
+        .vision-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-icon,
+        .vision-icon {
+            font-size: 3rem;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        /* Objectives & Core Values Section */
+        .objectives-values {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .objectives-values::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-pink), var(--accent-green));
+        }
+
+        .objectives-values-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-pink));
+        }
+
+        .section-icon {
+            font-size: 3rem;
+            color: var(--accent-pink);
+            margin-bottom: 20px;
+        }
+
+        /* Objectives Styles */
+        .objectives-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .objective-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+
+        .objective-item:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--accent-pink);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .objective-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .objective-item:hover .objective-number {
+            background: var(--accent-pink);
+            transform: scale(1.1);
+        }
+
+        .objective-content h4 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .objective-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Core Values Styles */
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .value-card {
+            padding: 25px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent-green);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .value-card:hover .value-icon {
+            color: var(--accent-pink);
+            transform: scale(1.1);
+        }
+
+        .value-card h4 {
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Founder's Profile Alignment Fix */
+        .director-text {
+            flex: 1;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .director-name {
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            font-size: 2rem;
+            text-align: left;
+        }
+
+        .director-title-only {
+            color: var(--accent-pink);
+            font-weight: 600;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            text-align: left;
+            font-style: italic;
+        }
+
+        .director-title {
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin: 30px 0 15px 0;
+            font-size: 1.3rem;
+            text-align: left;
+            border-bottom: 2px solid var(--accent-pink);
+            padding-bottom: 8px;
+        }
+
+        .director-text p:not(.director-title):not(.director-title-only):not(.director-quote) {
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .director-quote {
+            font-style: italic;
+            border-left: 4px solid var(--accent-green);
+            padding-left: 20px;
+            margin: 30px 0;
+            color: var(--text-light);
+            text-align: left;
+            background-color: rgba(40, 167, 69, 0.05);
+            padding: 25px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        /* Improve spacing and readability */
+        .director-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+        }
+
+        .director-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .director-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .director-container {
+                flex-direction: column;
+            }
+
+            .director-image {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .director-text {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .director-name {
+                font-size: 1.7rem;
+                text-align: center;
+            }
+
+            .director-title-only {
+                text-align: center;
+            }
+
+            .director-title {
+                text-align: left;
+            }
+
+            .director-quote {
+                text-align: left;
+                padding: 20px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Team Section Styles */
+        .team-section {
+            padding: 80px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            justify-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--bg-light);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .team-member:hover .member-image {
+            border-color: var(--accent-pink);
+            transform: scale(1.05);
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .member-role {
+            color: var(--accent-pink);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .member-bio {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* View Button */
+        .view-profile-btn {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-pink);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            z-index: 2;
+        }
+
+        .team-member:hover .view-profile-btn {
+            display: block;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        .view-profile-btn:hover {
+            background: #d91a7a;
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 15px rgba(232, 62, 140, 0.4);
+        }
+
+        /* Responsive Design for Team Section */
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+            }
+
+            .team-member {
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+
+            .team-member {
+                max-width: 350px;
+            }
+
+            .member-image {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .team-member {
+                max-width: 100%;
+                margin: 0 15px;
+            }
+
+            .member-image {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .team-modal {
+            background: var(--white);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.7);
+            opacity: 0;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .team-modal {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-pink);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: #d91a7a;
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .modal-image {
+            text-align: center;
+        }
+
+        .modal-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--bg-light);
+            box-shadow: var(--shadow);
+        }
+
+        .modal-details h2 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .modal-role {
+            color: var(--accent-pink);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .modal-bio {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(26, 43, 168, 0.7), rgba(15, 30, 122, 0.7)), url('/images/youth3.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+        }
+
+        .cta-section h2:after {
+            background-color: var(--accent-pink);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+
+            .objectives-values-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content,
+            .director-container {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .modal-image img {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .dropdown {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                display: none;
+                text-align: center;
+            }
+
+            .nav-item.open .dropdown {
+                display: block;
+            }
+
+            .nav-menu {
+                overflow-y: auto;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-modal {
+                width: 95%;
+                margin: 20px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .modal-details h2 {
+                font-size: 1.7rem;
+                text-align: left;
+            }
+        }
+
+        /* Enhanced Modal Styles for Formatted Content */
+        .modal-details {
+            text-align: left;
+        }
+
+        .profile-content {
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+
+        .profile-intro {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .profile-education {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-section {
+            margin-bottom: 30px;
+        }
+
+        .profile-section h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .profile-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .profile-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+
+        .profile-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 25px;
+            text-align: left;
+        }
+
+        .profile-list li:last-child {
+            border-bottom: none;
+        }
+
+        .profile-list li:before {
+            content: '•';
+            color: var(--accent-pink);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .profile-list strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* Ensure proper text alignment and spacing */
+        .modal-bio {
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        /* Responsive text alignment */
+        @media (max-width: 768px) {
+            .modal-details {
+                text-align: left;
+            }
+
+            .profile-section p {
+                text-align: left;
+            }
+
+            .profile-list li {
+                text-align: left;
+            }
+        }
+
+        /* Improve readability */
+        .profile-content p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        .profile-content strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* Add some spacing improvements */
+        .profile-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .profile-intro strong {
+            color: var(--accent-pink);
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            .member-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .modal-image img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .modal-details h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="/assets/css/cms.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body data-page="about">
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="/" class="logo"><img src="/images/YMAI.png"></a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link active">About <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="#objectives" class="dropdown-item">Objectives & Core Values</a></li>
+                        <li><a href="#vision" class="dropdown-item">Mission & Vision</a></li>
+                        <li><a href="#director" class="dropdown-item">Founder's Profile</a></li>
+                        <li><a href="#team" class="dropdown-item">Team</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/programs" class="nav-link">Programs <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="/programs#mentorship-circles" class="dropdown-item">Youth Mentorship
+                                Circles</a></li>
+                        <li><a href="/programs#leadership-bootcamps" class="dropdown-item">Leadership Bootcamps</a>
+                        </li>
+                        <li><a href="/programs#advocacy-forums" class="dropdown-item">Youth Advocacy Forums</a></li>
+                        <li><a href="/programs#community-projects" class="dropdown-item">Community Projects</a></li>
+                        <li><a href="/programs#scholarship-support" class="dropdown-item">Scholarship Support</a>
+                        </li>
+                        <li><a href="/programs#mental-health" class="dropdown-item">Mental Health Workshops</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/events" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-cms="page_heading">About Our Organization</h1>
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li>About Us</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About Overview -->
+    <section class="about-overview">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Mary Gold</h2>
+                    <p>Mary Gold is a youth-focused non-governmental Organization
+                        committed to empowering young people through mentorship, leadership development, capacity
+                        building, and advocacy. We believe that every young person has potential, and with the right
+                        guidance, opportunities, and support, they can become transformational leaders in their
+                        communities and beyond.</p>
+                </div>
+
+                <div class="about-image">
+                    <img src="/images/img2.jpeg" alt="Youth group discussion">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- Objectives & Core Values Section -->
+    <section class="objectives-values" id="objectives">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-cms="objectives_heading">Our Objectives & Core Values</h2>
+                <p>Guiding principles that drive our mission and define our approach</p>
+            </div>
+
+            <div class="objectives-values-grid">
+                <!-- Objectives Section -->
+                <div class="objectives-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Our Strategic Objectives</h3>
+                        <p>Clear goals that guide our programs and initiatives</p>
+                    </div>
+
+                    <div class="objectives-list">
+                        <div class="objective-item">
+                            <div class="objective-number">1</div>
+                            <div class="objective-content">
+                                <h4>Structured Mentorship</h4>
+                                <p>Provide structured mentorship that enables young people to develop essential life
+                                    skills, self-confidence, and a clear sense of purpose.</p>
+                            </div>
+                        </div>
+
+                        <div class="objective-item">
+                            <div class="objective-number">2</div>
+                            <div class="objective-content">
+                                <h4>Leadership Development</h4>
+                                <p>Equip youth with leadership and professional competencies needed to excel in
+                                    academics, careers, entrepreneurship, and community service.</p>
+                            </div>
+                        </div>
+
+                        <div class="objective-item">
+                            <div class="objective-number">3</div>
+                            <div class="objective-content">
+                                <h4>Safe Engagement Spaces</h4>
+                                <p>Create safe engagement spaces where young people can freely discuss their challenges,
+                                    aspirations, and ideas without fear or judgment.</p>
+                            </div>
+                        </div>
+
+                        <div class="objective-item">
+                            <div class="objective-number">4</div>
+                            <div class="objective-content">
+                                <h4>Positive Values & Citizenship</h4>
+                                <p>Promote positive values and responsible citizenship through trainings, awareness
+                                    campaigns, and community-driven initiatives.</p>
+                            </div>
+                        </div>
+
+                        <div class="objective-item">
+                            <div class="objective-number">5</div>
+                            <div class="objective-content">
+                                <h4>Youth Advocacy</h4>
+                                <p>Advocate for youth-friendly policies that enhance access to education, economic
+                                    opportunities, and developmental resources.</p>
+                            </div>
+                        </div>
+
+                        <div class="objective-item">
+                            <div class="objective-number">6</div>
+                            <div class="objective-content">
+                                <h4>Opportunity Connection</h4>
+                                <p>Connect young people to opportunities such as trainings, internships, scholarships,
+                                    and entrepreneurial support platforms.</p>
+                            </div>
+                        </div>
+
+                        <div class="objective-item">
+                            <div class="objective-number">7</div>
+                            <div class="objective-content">
+                                <h4>Community Participation</h4>
+                                <p>Encourage community participation by supporting youth-led solutions to local
+                                    challenges.</p>
+                            </div>
+                        </div>
+
+                        <div class="objective-item">
+                            <div class="objective-number">8</div>
+                            <div class="objective-content">
+                                <h4>Wellbeing Support</h4>
+                                <p>Strengthen mental, emotional, and social wellbeing through counseling, peer support,
+                                    and personal development programs.</p>
+                            </div>
+                        </div>
+
+                        <div class="objective-item">
+                            <div class="objective-number">9</div>
+                            <div class="objective-content">
+                                <h4>Strategic Partnerships</h4>
+                                <p>Build networks and partnerships with schools, NGOs, institutions, and community
+                                    leaders for the benefit of young people.</p>
+                            </div>
+                        </div>
+
+                        <div class="objective-item">
+                            <div class="objective-number">10</div>
+                            <div class="objective-content">
+                                <h4>Continuous Improvement</h4>
+                                <p>Monitor and evaluate youth development outcomes to ensure continuous improvement of
+                                    programs and services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Values Section -->
+                <div class="values-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Our Core Values</h3>
+                        <p>The principles that define who we are and how we operate</p>
+                    </div>
+
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Integrity</h4>
+                            <p>We maintain honesty, transparency, and ethical standards in all our actions and
+                                relationships.</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h4>Service</h4>
+                            <p>We are committed to serving youth and communities with dedication, compassion, and
+                                excellence.</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h4>Empathy</h4>
+                            <p>We listen, understand, and respond to the unique needs and perspectives of every young
+                                person.</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-people-carry"></i>
+                            </div>
+                            <h4>Collaboration</h4>
+                            <p>We believe in the power of partnerships and work together to achieve greater impact.</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h4>Innovation</h4>
+                            <p>We embrace creative approaches and continuously seek better ways to serve youth.</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-flag"></i>
+                            </div>
+                            <h4>Purpose-driven Leadership</h4>
+                            <p>We lead with vision, inspire action, and empower others to create positive change.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Mission & Vision -->
+    <section class="mission-vision-section">
+        <div class="container">
+            <div class="mission-vision">
+                <div class="mission-box" id="mission">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h2 data-cms="mission_heading">Our Mission</h2>
+                    <p data-cms="mission_text">To inspire, guide, and support young people through mentorship, leadership development, and
+                        advocacy. </p>
+                </div>
+                <div class="vision-box" id="vision">
+                    <div class="vision-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h2 data-cms="vision_heading">Our Vision</h2>
+                    <p data-cms="vision_text">To build a generation of empowered, purpose-driven young leaders who are equipped to shape a
+                        better future for themselves and their society.</p>
+                </div>
+            </div>
+    </section>
+
+    <!-- Director Profile -->
+    <!-- Director Profile -->
+    <section class="director-profile" id="director">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-cms="founder_section_heading">Founder's Profile</h2>
+            </div>
+            <div class="director-container">
+                <div class="director-image">
+                    <img src="/images/director.jpg" alt="Mr. Wellington Nkemadu" data-cms-founder-image>
+                </div>
+                <div class="director-text" data-cms-founder-bio>
+                    <h3 class="director-name" data-cms="founder_name">Dr. Wellington Nkemadu</h3>
+                    <p class="director-title-only" data-cms="founder_title">Founder</p>
+
+                    <p>Dr. Wellington Nkemadu is a passionate youth development advocate and founder of Mary Gold, an
+                        organization registered by the Corporate Affairs Commission of Nigeria. His dedication to
+                        empowering young people drives Mary Gold's vision of building capable, confident, and responsible
+                        future leaders.</p>
+
+                    <p>He obtained a B.A. in History (2nd Class Upper Division) from the University of Port Harcourt,
+                        where he received the Subject Prize in History and Diplomatic Studies and Professor Nwanna
+                        Nzewunwa's Memorial Prize.</p>
+
+                    <p>In 2005, he was employed by the Independent Corrupt Practices and Other Related Offences
+                        Commission (ICPC) as an Investigator. While at the ICPC, he obtained a Master's degree in Law
+                        Enforcement and Criminal Justice from Ahmadu Bello University, Zaria. He also obtained a Senior
+                        Executive Certificate in Institutional Integrity Management from the University of Hong Kong.
+                    </p>
+
+                    <p class="director-title">Professional Expertise & Service</p>
+                    <p>Dr. Nkemadu has twenty years' experience and expertise in the investigation of corruption,
+                        bribery, money laundering, illicit financial flows (IFF), employment and admission racketeering,
+                        project tracking, and other related offences.</p>
+
+                    <p>He served the ICPC in various strategic roles, including:</p>
+
+                    <p>• Investigator and Team Leader in General Investigations.</p>
+                    <p>• Head of Special Task Forces and Team Leader for Sting Operations targeting low-level
+                        corruption.</p>
+                    <p>• Coordinator of training for ICPC recruits from 2012 to 2023, and a lecturer at the
+                        Anti-Corruption Academy of Nigeria.</p>
+                    <p>• Prosecution Witness in several cases across the country.</p>
+
+                    <p>He served as the Chief Security Officer of the Commission for six years, responsible for
+                        developing and implementing security protocols at the Headquarters and State offices. He
+                        supervised personnel from the Nigeria Police, Nigeria Security and Civil Defence Corps, and Fire
+                        Service, and managed the Headquarters Detention facility.</p>
+
+                    <p class="director-title">Qualifications & Affiliations</p>
+                    <p>He holds a Graduate Membership of the Nigerian Institute of Management, is an Associate Member of
+                        the Association of Certified Fraud Examiners, a Fellow of the Institute of Corporate
+                        Administration of Nigeria, and a Member of the Nigerian Army Resource Centre (mnarc). He is also
+                        a Doctoral Fellow of the Institute of Leadership Manpower & Management Development (ILMMD).</p>
+
+                    <p>Dr. Wellington Nkemadu retired from the ICPC after years of dedicated service on November 10,
+                        2025. He is married with children, and enjoys travelling, reading, and watching documentaries.
+                    </p>
+
+                    <!--  <p class="director-quote">"Our youth are not just the leaders of tomorrow—they are partners in
+                        creating change today. When we listen to their voices, honor their experiences, and invest in
+                        their potential, we all benefit from the more just, compassionate, and innovative world they
+                        will help build."</p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Team -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-cms="team_heading">Trustees</h2>
+                <p>Our board of trustees is made up of diverse individuals with relevant expertise and requisite field
+                    experience to drive the cause of the organisation.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/BOTmember2.jpg" alt="Henry Nkemadu">
+                    </div>
+                    <h3 class="member-name">Dr Henry Nkemadu</h3>
+                    <p class="member-role">Board Member</p>
+                    <button class="view-profile-btn" data-member="henry-nkemadu">View Profile</button>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/BOTmember.jpg" alt="Aisha Williams">
+                    </div>
+                    <h3 class="member-name">Patience Ikoro Akwa</h3>
+                    <p class="member-role">Board Member</p>
+                    <button class="view-profile-btn" data-member="patience-ikoro">View Profile</button>
+
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/images/img1.jpg" alt="Igwe Mary Ebi">
+                    </div>
+                    <h3 class="member-name">Igwe Mary Ebi</h3>
+                    <p class="member-role">Board Secretary</p>
+
+                    <button class="view-profile-btn" data-member="igwe-mary">View Profile</button>
+                </div>
+                <!---  <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                            alt="Priya Sharma">
+                    </div>
+                    <h3 class="member-name">Priya Sharma</h3>
+                    <p class="member-role">Education Specialist</p>
+                    <p class="member-bio">Priya develops our educational curriculum and provides academic support to
+                        program participants.</p>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Us in Making a Difference</h2>
+            <p>Whether you're interested in volunteering, partnering with us, or supporting our programs
+                financially,
+                there are many ways to get involved and help us empower the next generation.</p>
+            <div class="cta-buttons">
+                <a href="/contact" class="btn btn-secondary">Become a Volunteer</a>
+                <a href="/contact" class="btn btn-primary">Support Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mary Gold</h3>
+                    <p>Inspiring, guiding, and empowering the next generation.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/programs">Our Programs</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="/programs#mentorship-circles">Youth Mentorship Circles</a></li>
+                        <li><a href="/programs#leadership-bootcamps">Leadership Bootcamps</a></li>
+                        <li><a href="/programs#advocacy-forums">Advocacy Forums</a></li>
+                        <li><a href="/programs#community-projects">Community Projects</a></li>
+                        <li><a href="/programs#scholarship-support">Scholarship Support</a></li>
+                        <li><a href="/programs#mental-health">Mental Health Workshops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                                        <ul class="footer-links" data-cms-footer-contact>
+                        <li><i class="fas fa-map-marker-alt"></i> House 23, Mosaic Garden Estate, Gaduwa District, Abuja</li>
+                        <li><i class="fas fa-phone"></i> 08189667096</li>
+                        <li><i class="fas fa-envelope"></i> onweebi12@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+                        <div class="copyright" data-cms-footer-copyright>
+                <p>&copy; 2026 Mary Gold. All rights reserved.</p>
+                <p>Crafted by: marygoldtech.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="team-modal">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modalContent">
+                <!-- Modal content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        // Team member data (consumed by js/main.js)
+        window.MARY_GOLD_TEAM = {
+            'henry-nkemadu': {
+                name: 'Henry Nkemadu',
+                role: 'Board Member',
+                image: 'images/BOTmember2.jpg',
+                bio: `
+            <div class="profile-content">
+                <p class="profile-intro">Dr. Henry Chukwudumeme Nkemadu is the <strong>Chairman/Chief Executive of Carlton Group of Companies</strong>, an astute administrator and an outstanding nation builder.</p>
+                
+                <p class="profile-education">Born in Lagos, Nigeria, he hails from Umuhu, Ukpor, Nnewi South Local Government Area of Anambra State. Dr. Nkemadu is highly educated, holding multiple degrees and certificates from institutions including the <strong>University of Nigeria, Nsukka (UNN)</strong>, <strong>University of Port Harcourt</strong>, and <strong>George Mason University, Virginia, USA</strong>.</p>
+                
+                <div class="profile-section">
+                    <h4>Career Highlights: Nigerian Communications Commission (NCC)</h4>
+                    <p>Dr. Nkemadu has a rewarding and extensive career spanning the entire telecom regulatory ecosystem. He joined the <strong>Nigerian Communications Commission (NCC)</strong> in September 2003 as a Principal Manager in Business Development and became a full Director in June 2019.</p>
+                    
+                    <p>He is a well-groomed professional and a consummate communicator who has traversed several strategic departments within the NCC, including:</p>
+                    
+                    <ul class="profile-list">
+                        <li><strong>Director, Research and Development Department</strong></li>
+                        <li><strong>Director, Public Affairs</strong></li>
+                        <li><strong>Deputy Director/Head, Special Intervention Projects (Project Department)</strong>: Superintended the initiation, planning, and execution of intervention projects that provided ICT infrastructure and connectivity to bridge digital knowledge gaps in schools and tertiary institutions.</li>
+                        <li><strong>Deputy Director/Head of Emerging Technologies Research (Research and Development Department)</strong>: Coordinated research activities to assess the effectiveness of regulatory decisions and collected information critical to the Commission and the ICT industry.</li>
+                        <li><strong>Deputy Director/Head of Policy and Research Unit (Competition and Economic Analysis)</strong>: Coordinated policy and research functions and facilitated reviews of telecom industry policies.</li>
+                        <li><strong>Zonal Controller, Lagos Zonal Office</strong>: Served as the Administrative Head and NCC representative for the Lagos zone.</li>
+                    </ul>
+                </div>
+                
+                <div class="profile-section">
+                    <h4>Prior Private Sector Experience</h4>
+                    <p>Prior to joining the NCC, Dr. Nkemadu worked in the private sector, serving in roles such as <strong>General Manager of Carlton Technologies Limited</strong>, Special Assistant to the Group Managing Director of General Telecom Plc, General Manager of Henrino Wels Limited, and Branch Manager of R. Bernestieli Ltd.</p>
+                </div>
+                
+                <div class="profile-section">
+                    <h4>Recognition and Personal Life</h4>
+                    <p>Dr. Nkemadu is widely traveled, having visited more than thirty countries on private, official, and business assignments, making him conversant with the international business environment. His accolades include the appointment as <strong>Vice Chairman of the International Telecommunications Union (ITU) Development Sector Study Group 2</strong> for the Study Period 2018–2021.</p>
+                    
+                    <p>He is married to Mrs. Wendy Nkemadu, and they are blessed with five children.</p>
+                </div>
+            </div>
+        `
+            },
+            'patience-ikoro': {
+                name: 'Patience Ikoro',
+                role: 'Board Member',
+                image: 'images/BOTmember.jpg',
+                bio: `
+            <div class="profile-content">
+                <p class="profile-intro">Ms. Patience Ikoro Akwa is currently pursuing a degree in Public Policy Administration at Miva Open University, where she is developing a strong foundation in global affairs, governance, and diplomacy.</p>
+                
+                <p class="profile-education">Alongside her academic journey, she has distinguished herself as a seasoned Executive Assistant, consistently demonstrating a commitment to efficiency, excellence, and organizational growth.</p>
+                
+                <div class="profile-section">
+                    <h4>Community Service & Volunteer Work</h4>
+                    <p>Beyond her professional achievements, Patience is deeply devoted to community service. She volunteers with several organizations, most notably the <strong>Shepherd's Mentorship Foundation</strong>, where she plays a central role in the <strong>Child's Safe Space initiative</strong>.</p>
+                    
+                    <p>In this role, she helps coordinate and organize community-focused events designed to strengthen unity, collaboration, and participation in development projects. Her work reflects her belief in the transformative impact of well-structured, collective efforts in driving meaningful and sustainable community change.</p>
+                </div>
+                
+                <div class="profile-section">
+                    <h4>Role in Mary Gold</h4>
+                    <p>In her current role as a <strong>Board Member of Mary Gold</strong>, Patience contributes significantly to shaping programs that empower young people through advocacy, education, and mentorship.</p>
+                    
+                    <p>She plays an active role in designing and coordinating youth-centered initiatives that promote leadership development, civic engagement, and informed participation in governance. Patience also supports the facilitation of dialogue sessions and mentorship activities, ensuring that young voices are heard, guided, and equipped with the tools needed to contribute meaningfully to their communities.</p>
+                    
+                    <p>Her dedication reflects Mary Gold's commitment to nurturing a generation of proactive, responsible, and socially conscious leaders.</p>
+                </div>
+                
+                <div class="profile-section">
+                    <h4>Key Contributions</h4>
+                    <ul class="profile-list">
+                        <li><strong>Academic Development</strong>: Pursuing Public Policy Administration to enhance governance expertise</li>
+                        <li><strong>Community Engagement</strong>: Active volunteer with Shepherd's Mentorship Foundation</li>
+                        <li><strong>Youth Empowerment</strong>: Board Member shaping Mary Gold's advocacy and mentorship programs</li>
+                        <li><strong>Event Coordination</strong>: Organizing community events that foster unity and collaboration</li>
+                        <li><strong>Leadership Development</strong>: Facilitating dialogue sessions and mentorship activities for youth</li>
+                    </ul>
+                </div>
+            </div>
+        `},
+            'igwe-mary': {
+                name: 'Igwe Mary Ebi',
+                role: 'Board Secretary',
+                image: 'images/img1.jpg',
+                bio: `
+            <div class="profile-content">
+                <p class="profile-intro">Ms. Igwe Mary Ebi is a dedicated and purpose-driven individual committed to making a positive impact in every environment she finds herself. Guided by the core values of excellence, integrity, and service, she consistently strives to deliver outstanding results through every task she undertakes.</p>
+                
+                <p class="profile-education">Her professional approach is defined by a deep sense of responsibility and a passion for adding value to individuals, teams, and organizations.</p>
+                
+                <div class="profile-section">
+                    <h4>Professional Expertise</h4>
+                    <p>With strong skills in <strong>System Analysis</strong> and <strong>Digital Marketing</strong>, Mary combines analytical thinking with creativity and strategic insight. Her ability to understand complex systems, align them with user needs, and support digital growth initiatives places her at the intersection of technology and communication.</p>
+                    
+                    <p>Mary's unique skill set allows her to bridge the gap between technical requirements and user experience, ensuring that digital solutions are both functionally robust and user-friendly.</p>
+                </div>
+                
+                <div class="profile-section">
+                    <h4>Career Vision</h4>
+                    <p>Mary's overarching goal is to contribute meaningfully to the development of people and organizations by applying her skills, embracing continuous learning, and maintaining an unwavering commitment to excellence.</p>
+                    
+                    <p>She aspires to be a catalyst for growth, innovation, and positive transformation wherever she goes, bringing together technical expertise and creative problem-solving to drive meaningful change.</p>
+                </div>
+                
+                <div class="profile-section">
+                    <h4>Core Competencies</h4>
+                    <ul class="profile-list">
+                        <li><strong>System Analysis</strong>: Comprehensive understanding of complex systems and user requirements</li>
+                        <li><strong>Digital Marketing Strategy</strong>: Creative and data-driven approach to digital growth</li>
+                        <li><strong>Strategic Planning</strong>: Aligning technical solutions with organizational objectives</li>
+                        <li><strong>User-Centric Design</strong>: Ensuring systems meet both functional and user experience needs</li>
+                        <li><strong>Continuous Innovation</strong>: Staying current with emerging technologies and marketing trends</li>
+                    </ul>
+                </div>
+            </div>
+        `
+            }
+        };
+    </script>    <script src="/assets/js/content.js"></script>
+    <script src="/assets/js/render-common.js"></script>
+    <script src="/assets/js/pages.js"></script>
+
+    <script src="/js/main.js"></script>
+    <!-- cms-wired -->
+</body>
+
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Mary Gold</title>
+    <link rel="canonical" href="https://marygold.org/events">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Events | Mary Gold">
+    <meta property="og:url" content="https://marygold.org/events">
+    <meta property="og:image" content="https://marygold.org/images/YMAI.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Brand Colors */
+        :root {
+            --primary-blue: #1A2BA8;
+            /* main blue from logo */
+            --blue-light: #3148D4;
+            /* lighter tone for hover */
+            --blue-dark: #0F1E7A;
+            /* darker tone for depth */
+            --accent-pink: #e83e8c;
+            --accent-green: #28a745;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-pink);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--blue-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-pink);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d91a7a;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo img {
+            height: 90px;
+            /* adjust to your preferred size */
+            width: auto;
+            /* keeps correct aspect ratio */
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-fallback {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-fallback span {
+            color: var(--accent-pink);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .nav-item {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-pink);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        /* Fix for dropdown list items */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+            /* Remove default list styling */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+            /* Remove any list styling */
+            list-style: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--bg-light);
+            color: var(--accent-pink);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Ensure no list markers appear */
+        .nav-menu ul,
+        .nav-menu li {
+            list-style: none;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 43, 168, 0.7), rgba(15, 30, 122, 0.7)), url('/images/learning.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 150px 0 80px;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .breadcrumb li:after {
+            content: '/';
+            position: absolute;
+            right: -15px;
+            top: 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .breadcrumb li:last-child:after {
+            display: none;
+        }
+
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--white);
+        }
+
+        /* Events Overview */
+        .events-overview {
+            background-color: var(--bg-light);
+        }
+
+        .overview-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .overview-text {
+            flex: 1;
+        }
+
+        .overview-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* Empty States */
+        .empty-state {
+            text-align: center;
+            padding: 60px 40px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+            transition: var(--transition);
+        }
+
+        .empty-state:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .empty-icon {
+            font-size: 5rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .empty-state h3 {
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .empty-state p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Event Types */
+        .event-types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .event-type-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .event-type-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-type-icon {
+            font-size: 3rem;
+            color: var(--accent-green);
+            margin-bottom: 20px;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(rgba(26, 43, 168, 0.7), rgba(15, 30, 122, 0.7)), url('/images/img2.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .newsletter-section h2 {
+            color: var(--white);
+        }
+
+        .newsletter-section h2:after {
+            background-color: var(--accent-pink);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .newsletter-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(232, 62, 140, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .event-types {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .overview-content {
+                flex-direction: column;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .dropdown {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                display: none;
+                text-align: center;
+            }
+
+            .nav-item.open .dropdown {
+                display: block;
+            }
+
+            .nav-menu {
+                overflow-y: auto;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .event-types {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            .empty-icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="/assets/css/cms.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body data-page="events">
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="/" class="logo"><img src="/images/YMAI.png"></a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="/about#objectives" class="dropdown-item">Objectives & Core Values</a></li>
+                        <li><a href="/about#vision" class="dropdown-item">Mission & Vision</a></li>
+                        <li><a href="/about#director" class="dropdown-item">Founder's Profile</a></li>
+                        <li><a href="/about#team" class="dropdown-item">Team</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/programs" class="nav-link">Programs <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="/programs#mentorship-circles" class="dropdown-item">Youth Mentorship
+                                Circles</a></li>
+                        <li><a href="/programs#leadership-bootcamps" class="dropdown-item">Leadership Bootcamps</a>
+                        </li>
+                        <li><a href="/programs#advocacy-forums" class="dropdown-item">Youth Advocacy Forums</a></li>
+                        <li><a href="/programs#community-projects" class="dropdown-item">Community Projects</a></li>
+                        <li><a href="/programs#scholarship-support" class="dropdown-item">Scholarship Support</a>
+                        </li>
+                        <li><a href="/programs#mental-health" class="dropdown-item">Mental Health Workshops</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/events" class="nav-link active">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 data-cms="page_heading">Our Events</h1>
+            <p>Join us for inspiring gatherings, workshops, and community activities</p>
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li>Events</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Events Overview -->
+    <section class="events-overview">
+        <div class="container">
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h2>Building Community Through Events</h2>
+                    <p>At Mary Gold, we believe in the power of bringing people
+                        together.
+                        Our events create spaces for learning, connection, and collective action.</p>
+                    <p>From workshops and seminars to community gatherings and advocacy campaigns, our events are
+                        designed to inspire, educate, and empower both youth and community members.</p>
+                    <p>While we're currently planning our next round of events, we invite you to stay connected and be
+                        the first to know when new opportunities arise.</p>
+                </div>
+                <div class="overview-image">
+                    <img src="/images/learning.jpg" alt="Community event gathering">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="upcoming-events">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-cms="upcoming_heading">Upcoming Events</h2>
+                <p>Mark your calendar for these exciting opportunities</p>
+            </div>
+
+            <div class="upcoming-events-list"></div>
+
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="far fa-calendar-plus"></i>
+                </div>
+                <h3 data-cms="upcoming_empty_heading">New Events Coming Soon!</h3>
+                <p data-cms="upcoming_empty_text">We're currently planning our next round of workshops, seminars, and community gatherings. Our team is
+                    working hard to create meaningful experiences that will inspire and empower.</p>
+                <p data-cms="upcoming_empty_text_2">Check back soon or subscribe to our newsletter to be the first to know about upcoming events.</p>
+                <a href="#newsletter" class="btn btn-primary">Notify Me About Events</a>
+            </div>
+
+            <div class="event-types">
+                <div class="event-type-card">
+                    <div class="event-type-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Workshops</h3>
+                    <p>Interactive sessions focused on skill-building, leadership development, and personal growth.</p>
+                </div>
+                <div class="event-type-card">
+                    <div class="event-type-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Gatherings</h3>
+                    <p>Opportunities to connect, share stories, and build relationships with fellow youth and mentors.
+                    </p>
+                </div>
+                <div class="event-type-card">
+                    <div class="event-type-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Advocacy Events</h3>
+                    <p>Campaigns and activities that amplify youth voices and drive positive social change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events -->
+    <section class="past-events" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-cms="past_heading">Past Events</h2>
+                <p>Highlights from our previous gatherings and activities</p>
+            </div>
+
+            <div class="past-events-list"></div>
+
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="far fa-calendar-check"></i>
+                </div>
+                <h3 data-cms="past_empty_heading">Event Archive Coming Soon</h3>
+                <p data-cms="past_empty_text">We're in the process of documenting our past events to share the impact and stories from our
+                    community.</p>
+                <p data-cms="past_empty_text_2">Soon you'll be able to browse through photos, testimonials, and highlights from our previous
+                    workshops, gatherings, and advocacy campaigns.</p>
+                <a href="/contact" class="btn btn-outline">View Photo Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="container">
+            <h2 data-cms="newsletter_heading">Stay Connected</h2>
+            <p>Subscribe to our newsletter and be the first to know about upcoming events, program updates, and
+                opportunities to get involved.</p>
+
+            <form action="/events.html" method="POST" class="newsletter-form" id="newsletterForm" name="newsletter"
+                data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="newsletter">
+                <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+                <input type="email" name="email" class="newsletter-input" placeholder="Enter your email address"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    title="Please enter a valid email address (e.g., name@example.com)" required>
+                <button type="submit" class="btn btn-secondary">Subscribe Now</button>
+            </form>
+
+            <div id="newsletterMessage" style="display: none; margin-top: 20px; padding: 15px; border-radius: 5px;">
+            </div>
+
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">We respect your privacy and will never share
+                your information.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mary Gold</h3>
+                    <p>Inspiring, guiding, and empowering the next generation.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/programs">Our Programs</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="/programs#mentorship-circles">Youth Mentorship Circles</a></li>
+                        <li><a href="/programs#leadership-bootcamps">Leadership Bootcamps</a></li>
+                        <li><a href="/programs#advocacy-forums">Advocacy Forums</a></li>
+                        <li><a href="/programs#community-projects">Community Projects</a></li>
+                        <li><a href="/programs#scholarship-support">Scholarship Support</a></li>
+                        <li><a href="/programs#mental-health">Mental Health Workshops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                                        <ul class="footer-links" data-cms-footer-contact>
+                        <li><i class="fas fa-map-marker-alt"></i> House 23, Mosaic Garden Estate, Gaduwa District, Abuja</li>
+                        <li><i class="fas fa-phone"></i> 08189667096</li>
+                        <li><i class="fas fa-envelope"></i> onweebi12@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+                        <div class="copyright" data-cms-footer-copyright>
+                <p>&copy; 2026 Mary Gold. All rights reserved.</p>
+                <p>Crafted by: marygoldtech.</p>
+            </div>
+        </div>
+    </footer>    <script src="/assets/js/content.js"></script>
+    <script src="/assets/js/render-common.js"></script>
+    <script src="/assets/js/pages.js"></script>
+
+
+    <script src="/js/main.js"></script>
+    <!-- cms-wired -->
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+  "event_types": [
+    { "icon": "fas fa-chalkboard-teacher", "title": "Workshops", "text": "Interactive sessions focused on skill-building, leadership development, and personal growth." },
+    { "icon": "fas fa-users", "title": "Community Gatherings", "text": "Opportunities to connect, share stories, and build relationships with fellow youth and mentors." },
+    { "icon": "fas fa-bullhorn", "title": "Advocacy Events", "text": "Campaigns and activities that amplify youth voices and drive positive social change." }
+  ],
+  "upcoming": [],
+  "past": []
+}

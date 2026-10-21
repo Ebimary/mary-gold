@@ -1,0 +1,270 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Netlify Identity widget handles login on the public site.
+logo_url: /images/YMAI.png
+site_url: https://marygold.org
+display_url: https://marygold.org
+publish_mode: editorial_workflow
+
+media_folder: uploads
+public_folder: /uploads
+
+collections:
+  # ---------------------------------------------------------------- SETTINGS
+  - name: settings
+    label: "Site Settings"
+    label_singular: "Setting"
+    files:
+      - name: site
+        label: "General Settings (logo, phone, email, address, socials)"
+        file: content/site/settings.json
+        fields:
+          - { label: "Site Name", name: site_name, widget: string }
+          - { label: "Tagline", name: tagline, widget: string }
+          - { label: "Logo", name: logo, widget: image, required: false }
+          - { label: "Phone Number", name: phone, widget: string }
+          - { label: "WhatsApp Number (intl, digits only)", name: whatsapp, widget: string, hint: "e.g. 2348189667096" }
+          - { label: "Email Address", name: email, widget: string }
+          - { label: "Full Address", name: address, widget: string }
+          - { label: "Address Line 1", name: address_line1, widget: string }
+          - { label: "Address Line 2", name: address_line2, widget: string }
+          - { label: "Footer About Text", name: footer_about, widget: text }
+          - { label: "Office Hours — Weekdays", name: office_hours_weekdays, widget: string }
+          - { label: "Office Hours — Weekday Time", name: office_hours_weekdays_time, widget: string }
+          - { label: "Office Hours — Saturday", name: office_hours_saturday, widget: string }
+          - { label: "Office Hours — Saturday Time", name: office_hours_saturday_time, widget: string }
+          - { label: "Office Hours — Sunday", name: office_hours_sunday, widget: string }
+          - { label: "Office Hours — Sunday Time", name: office_hours_sunday_time, widget: string }
+          - { label: "Copyright Text", name: copyright, widget: string }
+          - { label: "Credit Text", name: credit, widget: string }
+          - { label: "Facebook URL", name: facebook, widget: string, required: false }
+          - { label: "Twitter / X URL", name: twitter, widget: string, required: false }
+          - { label: "Instagram URL", name: instagram, widget: string, required: false }
+          - { label: "LinkedIn URL", name: linkedin, widget: string, required: false }
+          - { label: "WhatsApp Default Message", name: whatsapp_message, widget: text, required: false }
+
+  # ------------------------------------------------------------------ PAGES
+  - name: pages
+    label: "Pages"
+    label_singular: "Page"
+    files:
+      - name: home
+        label: "Home Page"
+        file: content/pages/home.json
+        fields:
+          - { label: "Hero Slides", name: hero_slides, widget: list, fields: [
+              { label: Title, name: title, widget: string },
+              { label: Text, name: text, widget: text },
+              { label: "Button Text", name: button_text, widget: string },
+              { label: "Button Link", name: button_link, widget: string }
+            ] }
+          - { label: "About Heading", name: about_heading, widget: string }
+          - { label: "About Text 1", name: about_text_1, widget: text }
+          - { label: "About Text 2", name: about_text_2, widget: text }
+          - { label: "About Button Text", name: about_button_text, widget: string }
+          - { label: "About Button Link", name: about_button_link, widget: string }
+          - { label: "Programs Heading", name: programs_heading, widget: string }
+          - { label: "Programs Subtitle", name: programs_subtitle, widget: text }
+          - { label: "Why Heading", name: why_heading, widget: string }
+          - { label: "Why Subtitle", name: why_subtitle, widget: text }
+          - { label: "Testimonials Heading", name: testimonials_heading, widget: string }
+          - { label: "Testimonials Subtitle", name: testimonials_subtitle, widget: text }
+          - { label: "CTA Heading", name: cta_heading, widget: string }
+          - { label: "CTA Text", name: cta_text, widget: text }
+
+      - name: about
+        label: "About Page"
+        file: content/pages/about.json
+        fields:
+          - { label: "Page Heading", name: page_heading, widget: string }
+          - { label: "Overview Heading", name: overview_heading, widget: string }
+          - { label: "Overview Text", name: overview_text, widget: text }
+          - { label: "Objectives Heading", name: objectives_heading, widget: string }
+          - { label: "Objectives Subtitle", name: objectives_subtitle, widget: text }
+          - { label: "Objectives Group Heading", name: objectives_group_heading, widget: string }
+          - { label: "Objectives Group Subtitle", name: objectives_group_subtitle, widget: text }
+          - { label: "Values Heading", name: values_heading, widget: string }
+          - { label: "Values Subtitle", name: values_subtitle, widget: text }
+          - { label: "Mission Heading", name: mission_heading, widget: string }
+          - { label: "Mission Text", name: mission_text, widget: text }
+          - { label: "Vision Heading", name: vision_heading, widget: string }
+          - { label: "Vision Text", name: vision_text, widget: text }
+          - { label: "Founder Section Heading", name: founder_section_heading, widget: string }
+          - { label: "Team Heading", name: team_heading, widget: string }
+          - { label: "Team Subtitle", name: team_subtitle, widget: text }
+          - { label: "CTA Heading", name: cta_heading, widget: string }
+          - { label: "CTA Text", name: cta_text, widget: text }
+
+      - name: programs_page
+        label: "Programs Page"
+        file: content/pages/programs.json
+        fields:
+          - { label: "Page Heading", name: page_heading, widget: string }
+          - { label: "Page Subtitle", name: page_subtitle, widget: text }
+          - { label: "Overview Heading", name: overview_heading, widget: string }
+          - { label: "Overview Text 1", name: overview_text_1, widget: text }
+          - { label: "Overview Text 2", name: overview_text_2, widget: text }
+          - { label: "Programs Section Heading", name: programs_heading, widget: string }
+          - { label: "Programs Section Subtitle", name: programs_subtitle, widget: text }
+          - { label: "Beneficiaries Heading", name: beneficiaries_heading, widget: string }
+          - { label: "Beneficiaries Subtitle", name: beneficiaries_subtitle, widget: text }
+          - { label: "Beneficiaries Group Heading", name: beneficiaries_group_heading, widget: string }
+          - { label: "Beneficiaries Group Text", name: beneficiaries_group_text, widget: text }
+          - { label: "CTA Heading", name: cta_heading, widget: string }
+          - { label: "CTA Text", name: cta_text, widget: text }
+
+      - name: events
+        label: "Events Page"
+        file: content/pages/events.json
+        fields:
+          - { label: "Page Heading", name: page_heading, widget: string }
+          - { label: "Page Subtitle", name: page_subtitle, widget: text }
+          - { label: "Overview Heading", name: overview_heading, widget: string }
+          - { label: "Overview Text 1", name: overview_text_1, widget: text }
+          - { label: "Overview Text 2", name: overview_text_2, widget: text }
+          - { label: "Overview Text 3", name: overview_text_3, widget: text }
+          - { label: "Upcoming Heading", name: upcoming_heading, widget: string }
+          - { label: "Upcoming Subtitle", name: upcoming_subtitle, widget: text }
+          - { label: "Upcoming Empty Heading", name: upcoming_empty_heading, widget: string }
+          - { label: "Upcoming Empty Text", name: upcoming_empty_text, widget: text }
+          - { label: "Upcoming Empty Text 2", name: upcoming_empty_text_2, widget: text }
+          - { label: "Past Heading", name: past_heading, widget: string }
+          - { label: "Past Subtitle", name: past_subtitle, widget: text }
+          - { label: "Past Empty Heading", name: past_empty_heading, widget: string }
+          - { label: "Past Empty Text", name: past_empty_text, widget: text }
+          - { label: "Past Empty Text 2", name: past_empty_text_2, widget: text }
+          - { label: "Newsletter Heading", name: newsletter_heading, widget: string }
+          - { label: "Newsletter Text", name: newsletter_text, widget: text }
+
+      - name: contact
+        label: "Contact Page"
+        file: content/pages/contact.json
+        fields:
+          - { label: "Page Heading", name: page_heading, widget: string }
+          - { label: "Page Subtitle", name: page_subtitle, widget: text }
+          - { label: "Info Heading", name: info_heading, widget: string }
+          - { label: "Location Heading", name: location_heading, widget: string }
+          - { label: "Phone Heading", name: phone_heading, widget: string }
+          - { label: "Email Heading", name: email_heading, widget: string }
+          - { label: "Hours Heading", name: hours_heading, widget: string }
+          - { label: "Form Heading", name: form_heading, widget: string }
+          - { label: "Map Heading", name: map_heading, widget: string }
+          - { label: "Map Subtitle", name: map_subtitle, widget: text }
+          - { label: "FAQ Heading", name: faq_heading, widget: string }
+          - { label: "FAQ Subtitle", name: faq_subtitle, widget: text }
+
+  # ------------------------------------------------------------------- TEAM
+  - name: team
+    label: "Founder & Trustees"
+    files:
+      - name: founder
+        label: "Founder Profile"
+        file: content/founder.json
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Title, name: title, widget: string }
+          - { label: Photo, name: image, widget: image }
+          - { label: "Full Biography (rich text)", name: bio, widget: markdown }
+
+      - name: trustees
+        label: "Trustees / Board Members"
+        file: content/team.json
+        fields:
+          - label: Members
+            name: members
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Role / Position, name: role, widget: string }
+              - { label: Photo, name: image, widget: image }
+              - { label: "Biography (rich text)", name: bio, widget: markdown }
+
+  # ---------------------------------------------------------------- PROGRAMS
+  - name: programs
+    label: "Programs"
+    label_singular: "Program"
+    files:
+      - name: list
+        label: "All Programs"
+        file: content/programs.json
+        fields:
+          - label: Programs
+            name: programs
+            widget: list
+            fields:
+              - { label: Slug (anchor id), name: slug, widget: string, hint: "lowercase-with-dashes, e.g. mentorship-circles" }
+              - { label: "Icon (Font Awesome class)", name: icon, widget: string, hint: "e.g. fas fa-users" }
+              - { label: Title, name: title, widget: string }
+              - { label: Summary, name: summary, widget: text }
+              - { label: "Feature Bullets", name: features, widget: list }
+              - { label: "Button Text", name: button_text, widget: string }
+              - { label: "Button Link", name: button_link, widget: string }
+
+  # ------------------------------------------------------------------ EVENTS
+  - name: events
+    label: "Events"
+    files:
+      - name: list
+        label: "Event Types & Listings"
+        file: content/events.json
+        fields:
+          - label: "Event Types"
+            name: event_types
+            widget: list
+            fields:
+              - { label: "Icon (Font Awesome class)", name: icon, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+          - label: "Upcoming Events"
+            name: upcoming
+            widget: list
+            required: false
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Date, name: date, widget: datetime }
+              - { label: Location, name: location, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: "Image", name: image, widget: image, required: false }
+          - label: "Past Events"
+            name: past
+            widget: list
+            required: false
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Date, name: date, widget: datetime }
+              - { label: Location, name: location, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: "Image", name: image, widget: image, required: false }
+
+  # --------------------------------------------------------------------- FAQ
+  - name: faq
+    label: "FAQ"
+    files:
+      - name: list
+        label: "Frequently Asked Questions"
+        file: content/faq.json
+        fields:
+          - label: Questions
+            name: faqs
+            widget: list
+            fields:
+              - { label: Question, name: question, widget: string }
+              - { label: Answer, name: answer, widget: text }
+
+  # ------------------------------------------------------------ TESTIMONIALS
+  - name: testimonials
+    label: "Testimonials"
+    files:
+      - name: list
+        label: "Testimonials"
+        file: content/testimonials.json
+        fields:
+          - label: Testimonials
+            name: testimonials
+            widget: list
+            fields:
+              - { label: Quote, name: quote, widget: text }
+              - { label: Name, name: name, widget: string }
+              - { label: Role, name: role, widget: string }

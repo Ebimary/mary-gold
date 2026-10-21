@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+_site/
+dist/
+
+# Vercel / Netlify
+.vercel/
+.netlify/
+
+# Environment
+.env
+.env.local
+
+# OS / editors
+.DS_Store
+Thumbs.db
+*.log
+.vercel
+
+# Python
+__pycache__/
+*.pyc

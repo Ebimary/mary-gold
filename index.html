@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary Gold</title>
+    <link rel="canonical" href="https://marygold.org/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mary Gold | YBIYTC – Your Best Is Yet To Come">
+    <meta property="og:url" content="https://marygold.org/">
+    <meta property="og:image" content="https://marygold.org/images/YMAI.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Brand Colors */
+        :root {
+            --primary-blue: #1A2BA8;
+            --blue-light: #3148D4;
+            --blue-dark: #0F1E7A;
+            --accent-pink: #e83e8c;
+            --accent-green: #28a745;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-pink);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--blue-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-pink);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: #d91a7a;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        /* Fix Logo Size */
+        .logo img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo {
+            size: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo span {
+            color: var(--accent-pink);
+        }
+
+        .logo-fallback {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-fallback span {
+            color: var(--accent-pink);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .nav-item {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-pink);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        /* Fix for dropdown list items */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+            list-style: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--bg-light);
+            color: var(--accent-pink);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Ensure no list markers appear */
+        .nav-menu ul,
+        .nav-menu li {
+            list-style: none;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section with Slider */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            margin-top: 70px;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slides-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(26, 43, 168, 0.7), rgba(15, 30, 122, 0.7));
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .slide-content {
+            display: none;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .slide-content.active {
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .hero .btn {
+            min-width: 150px;
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            z-index: 3;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: var(--white);
+            transform: scale(1.2);
+        }
+
+        .slider-arrow {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .slider-arrow:hover {
+            background-color: var(--accent-pink);
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Preview Section */
+        .about-preview {
+            background-color: var(--bg-light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border-top: 4px solid transparent;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-card:nth-child(1) {
+            border-top-color: #e83e8c;
+        }
+
+        .program-card:nth-child(2) {
+            border-top-color: #1a4b8c;
+        }
+
+        .program-card:nth-child(3) {
+            border-top-color: #28a745;
+        }
+
+        .program-card:nth-child(4) {
+            border-top-color: #ffc107;
+        }
+
+        .program-card:nth-child(5) {
+            border-top-color: #17a2b8;
+        }
+
+        .program-card:nth-child(6) {
+            border-top-color: #6f42c1;
+        }
+
+        .program-header {
+            padding: 25px 25px 15px;
+            position: relative;
+        }
+
+        .program-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--blue-light));
+            color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .program-content {
+            padding: 0 25px 25px;
+        }
+
+        .program-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .program-features {
+            margin: 20px 0;
+        }
+
+        .program-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .program-feature i {
+            color: var(--accent-green);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Why Our Work Matters */
+        .work-matters {
+            background-color: var(--bg-light);
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .work-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .work-icon {
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonials-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            flex: 0 0 100%;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .testimonial-slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .testimonial-slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-slider-dot.active {
+            background-color: var(--primary-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .programs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                margin: 15px 0;
+            }
+
+            .dropdown {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                display: none;
+                text-align: center;
+            }
+
+            .nav-item.open .dropdown {
+                display: block;
+            }
+
+            .nav-menu {
+                overflow-y: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slider-arrow {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="/assets/css/cms.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body data-page="home">
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="/" class="logo"><img src="/images/YMAI.png"> </a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="/" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="/about#objectives" class="dropdown-item">Objectives & Core Values</a></li>
+                        <li><a href="/about#vision" class="dropdown-item">Mission & Vision</a></li>
+                        <li><a href="/about#director" class="dropdown-item">Founder's Profile</a></li>
+                        <li><a href="/about#team" class="dropdown-item">Team</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/programs" class="nav-link">Programs <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="/programs#mentorship-circles" class="dropdown-item">Youth Mentorship
+                                Circles</a></li>
+                        <li><a href="/programs#leadership-bootcamps" class="dropdown-item">Leadership Bootcamps</a>
+                        </li>
+                        <li><a href="/programs#advocacy-forums" class="dropdown-item">Youth Advocacy Forums</a></li>
+                        <li><a href="/programs#community-projects" class="dropdown-item">Community Projects</a></li>
+                        <li><a href="/programs#scholarship-support" class="dropdown-item">Scholarship Support</a>
+                        </li>
+                        <li><a href="/programs#mental-health" class="dropdown-item">Mental Health Workshops</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/events" class="nav-link">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section with Slider -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slides-container">
+                <div class="slide active" style="background-image: url('/images/img2.jpeg');">
+                </div>
+                <div class="slide" style="background-image: url('/images/learning.jpg');">
+                </div>
+                <div class="slide" style="background-image: url('/images/youth3.jpg');">
+                </div>
+                <div class="slide" style="background-image: url('/images/happy-boy.jpg');">
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <!-- Slide 1: Leadership Development -->
+                <div class="slide-content active">
+                    <h1>Developing Future Leaders</h1>
+                    <p>We equip young people with essential leadership skills, confidence, and vision to become
+                        effective leaders in their schools, communities, and future careers.</p>
+                    <div class="hero-btns">
+                        <a href="/programs#leadership-bootcamps" class="btn btn-primary">Join Leadership Program</a>
+                        <a href="#about" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Mentorship -->
+                <div class="slide-content">
+                    <h1>Transformative Mentorship</h1>
+                    <p>Connecting youth with experienced mentors who provide guidance, support, and career advice to
+                        help navigate educational and professional paths.</p>
+                    <div class="hero-btns">
+                        <a href="/programs#mentorship-circles" class="btn btn-primary">Become a Mentee</a>
+                        <a href="#about" class="btn btn-secondary">Support Our Work</a>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Advocacy -->
+                <div class="slide-content">
+                    <h1>Youth Advocacy & Voice</h1>
+                    <p>Empowering young people to become advocates for issues they care about and driving positive
+                        social change in their communities.</p>
+                    <div class="hero-btns">
+                        <a href="/programs#advocacy-forums" class="btn btn-primary">Join Advocacy Forums</a>
+                        <a href="#about" class="btn btn-secondary">Get Involved</a>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Community Impact -->
+                <div class="slide-content">
+                    <h1>Community Transformation</h1>
+                    <p>Creating lasting impact through youth-led community projects, volunteering, and initiatives that
+                        address local challenges and needs.</p>
+                    <div class="hero-btns">
+                        <a href="/programs#community-projects" class="btn btn-primary">Start a Project</a>
+                        <a href="#about" class="btn btn-secondary">See Impact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+            <div class="slider-arrow prev-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slider-dots">
+                <div class="slider-dot active" data-index="0"></div>
+                <div class="slider-dot" data-index="1"></div>
+                <div class="slider-dot" data-index="2"></div>
+                <div class="slider-dot" data-index="3"></div>
+            </div>
+            <div class="slider-arrow next-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="about-preview" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 data-cms="about_heading">About Our Initiative</h2>
+                    <p>Mary Gold is a non-profit organization dedicated to empowering
+                        young people through comprehensive mentorship programs, leadership development, and community
+                        advocacy.</p>
+                    <!-- <p>Founded in 2015, we have impacted over 10,000 youth across the country, helping them develop
+                        essential life skills, pursue educational opportunities, and become active contributors to their
+                        communities.</p>-->
+                    <a href="/about" class="btn btn-outline">Read More About Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="/images/happy-boy.jpg" alt="Youth group discussion">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-cms="programs_heading">Our Programs</h2>
+                <p>Comprehensive initiatives designed to transform youth potential into achievement</p>
+            </div>
+            <div class="programs-grid">
+                <!-- Youth Mentorship Circles -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Youth Mentorship Circles</h3>
+                    </div>
+                    <div class="program-content">
+                        <p>Structured small-group mentorship sessions where youth connect with experienced mentors for
+                            guidance, support, and personal development.</p>
+                        <div class="program-features">
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Small group sessions (5-8 participants)</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Regular meetings with assigned mentors</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Personal development planning</span>
+                            </div>
+                        </div>
+                        <a href="/contact" class="btn btn-outline">Explore Our Youth Mentorship Circles</a>
+                    </div>
+                </div>
+
+                <!-- Leadership & Career Development Bootcamps -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Leadership & Career Development Bootcamps</h3>
+                    </div>
+                    <div class="program-content">
+                        <p>Intensive training programs focusing on leadership skills, career readiness, and professional
+                            development for young aspiring leaders.</p>
+                        <div class="program-features">
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Weekend intensive workshops</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Career assessment and planning</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Leadership skill development</span>
+                            </div>
+                        </div>
+                        <a href="/contact" class="btn btn-outline">Apply for Leadership Bootcamps</a>
+                    </div>
+                </div>
+
+                <!-- Youth Rights & Policy Advocacy Forums -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Youth Rights & Policy Advocacy Forums</h3>
+                    </div>
+                    <div class="program-content">
+                        <p>Platforms for youth to learn about their rights, engage in policy discussions, and advocate
+                            for youth-friendly legislation and services.</p>
+                        <div class="program-features">
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Policy education sessions</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Advocacy skill training</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Engagement with policymakers</span>
+                            </div>
+                        </div>
+                        <a href="/contact" class="btn btn-outline">Get Involved</a>
+                    </div>
+                </div>
+
+                <!-- Community Engagement & Volunteering Projects -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Community Engagement & Volunteering Projects</h3>
+                    </div>
+                    <div class="program-content">
+                        <p>Hands-on community service projects that allow youth to address local challenges while
+                            developing empathy and civic responsibility.</p>
+                        <div class="program-features">
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Local community service projects</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Skill-based volunteering</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Community needs assessment</span>
+                            </div>
+                        </div>
+                        <a href="/contact" class="btn btn-outline">Volunteer Today</a>
+                    </div>
+                </div>
+
+                <!-- Scholarship & Internship Linkage Support -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Scholarship & Internship Linkage Support</h3>
+                    </div>
+                    <div class="program-content">
+                        <p>Comprehensive support system connecting youth with educational scholarships, internship
+                            opportunities, and career advancement pathways.</p>
+                        <div class="program-features">
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Scholarship application assistance</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Internship placement support</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Career counseling and guidance</span>
+                            </div>
+                        </div>
+                        <a href="/contact" class="btn btn-outline">Explore Opportunities</a>
+                    </div>
+                </div>
+
+                <!-- Mental Health & Personal Growth Workshops -->
+                <div class="program-card">
+                    <div class="program-header">
+                        <div class="program-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Mental Health & Personal Growth Workshops</h3>
+                    </div>
+                    <div class="program-content">
+                        <p>Interactive workshops and support sessions focusing on mental wellness, emotional
+                            intelligence, and personal development for youth.</p>
+                        <div class="program-features">
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mental health awareness sessions</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Stress management techniques</span>
+                            </div>
+                            <div class="program-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Peer support groups</span>
+                            </div>
+                        </div>
+                        <a href="/contact" class="btn btn-outline">Join Workshop</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Our Work Matters 
+    <section class="work-matters">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-cms="why_heading">Why Our Work Matters</h2>
+                <p>Youth development is essential for building stronger communities and a brighter future</p>
+            </div>
+            <div class="work-grid">
+                <div class="work-item">
+                    <div class="work-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="work-text">
+                        <h3>Educational Success</h3>
+                        <p>Our programs have helped increase high school graduation rates by 25% among participants and
+                            improved college enrollment by 40%.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="work-text">
+                        <h3>Career Readiness</h3>
+                        <p>85% of our program alumni report being better prepared for the workforce and more confident
+                            in their career choices.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="work-text">
+                        <h3>Community Impact</h3>
+                        <p>Youth in our programs contribute over 15,000 hours of community service annually, addressing
+                            local issues and creating positive change.</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <div class="work-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="work-text">
+                        <h3>Safe Spaces</h3>
+                        <p>We provide safe, inclusive environments where young people can express themselves, explore
+                            their identities, and develop resilience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-cms="testimonials_heading">What People Say</h2>
+                <p>Hear from our program participants and partners</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonials-container" id="testimonials-container">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"The mentorship program completely changed my perspective on what I
+                            could achieve. My mentor helped me navigate college applications and secure scholarships I
+                            didn't even know existed."</p>
+                        <!-- <p class="testimonial-author">- Jamal R., Program Alumni</p> -->
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-text">"As a volunteer mentor, I've seen firsthand how these programs
+                            transform young lives. The structured approach and supportive community make all the
+                            difference in helping youth realize their potential."</p>
+                        <!--<p class="testimonial-author">- Sarah T., Volunteer Mentor</p>-->
+                    </div>
+                    <div class="testimonial">
+                        <p class="testimonial-text">"Our partnership with Mary Gold has brought incredible value to our
+                            community. The youth advocacy projects have addressed real local issues and empowered young
+                            people to become active citizens."</p>
+                        <!--<p class="testimonial-author">- Mayor Johnson, Community Partner</p>-->
+                    </div>
+                </div>
+                <div class="testimonial-slider-controls">
+                    <div class="testimonial-slider-dot active" data-index="0"></div>
+                    <div class="testimonial-slider-dot" data-index="1"></div>
+                    <div class="testimonial-slider-dot" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mary Gold</h3>
+                    <p>Inspiring, guiding, and empowering the next generation.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/programs">Our Programs</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="/programs#mentorship-circles">Youth Mentorship Circles</a></li>
+                        <li><a href="/programs#leadership-bootcamps">Leadership Bootcamps</a></li>
+                        <li><a href="/programs#advocacy-forums">Advocacy Forums</a></li>
+                        <li><a href="/programs#community-projects">Community Projects</a></li>
+                        <li><a href="/programs#scholarship-support">Scholarship Support</a></li>
+                        <li><a href="/programs#mental-health">Mental Health Workshops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                                        <ul class="footer-links" data-cms-footer-contact>
+                        <li><i class="fas fa-map-marker-alt"></i> House 23, Mosaic Garden Estate, Gaduwa District, Abuja</li>
+                        <li><i class="fas fa-phone"></i> 08189667096</li>
+                        <li><i class="fas fa-envelope"></i> onweebi12@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+                        <div class="copyright" data-cms-footer-copyright>
+                <p>&copy; 2026 Mary Gold. All rights reserved.</p>
+                <p>Crafted by: marygoldtech.</p>
+            </div>
+        </div>
+    </footer>    <script src="/assets/js/content.js"></script>
+    <script src="/assets/js/render-common.js"></script>
+    <script src="/assets/js/pages.js"></script>
+
+
+    <script src="/js/main.js"></script>
+    <!-- cms-wired -->
+<script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function (user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function () {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+{
+  "programs": [
+    {
+      "slug": "mentorship-circles",
+      "icon": "fas fa-users",
+      "title": "Youth Mentorship Circles",
+      "summary": "Structured small-group mentorship sessions where youth connect with experienced mentors for guidance and support.",
+      "features": [
+        "Small group sessions (5-8 participants)",
+        "Regular meetings with assigned mentors",
+        "Personal development planning",
+        "Career guidance and advice"
+      ],
+      "button_text": "Explore Our Youth Mentorship Circles",
+      "button_link": "/contact"
+    },
+    {
+      "slug": "leadership-bootcamps",
+      "icon": "fas fa-graduation-cap",
+      "title": "Leadership & Career Development Bootcamps",
+      "summary": "Intensive training programs focusing on leadership skills, career readiness, and professional development.",
+      "features": [
+        "Weekend intensive workshops",
+        "Career assessment and planning",
+        "Leadership skill development",
+        "Networking opportunities"
+      ],
+      "button_text": "Apply for Leadership Bootcamps",
+      "button_link": "/contact"
+    },
+    {
+      "slug": "advocacy-forums",
+      "icon": "fas fa-bullhorn",
+      "title": "Youth Rights & Policy Advocacy Forums",
+      "summary": "Platforms for youth to learn about their rights, engage in policy discussions, and advocate for change.",
+      "features": [
+        "Policy education sessions",
+        "Advocacy skill training",
+        "Engagement with policymakers",
+        "Rights awareness campaigns"
+      ],
+      "button_text": "Join Advocacy Forums",
+      "button_link": "/contact"
+    },
+    {
+      "slug": "community-projects",
+      "icon": "fas fa-hands-helping",
+      "title": "Community Engagement & Volunteering Projects",
+      "summary": "Hands-on community service projects that allow youth to address local challenges while developing skills.",
+      "features": [
+        "Local community service projects",
+        "Skill-based volunteering",
+        "Community needs assessment",
+        "Project management experience"
+      ],
+      "button_text": "Volunteer Today",
+      "button_link": "/contact"
+    },
+    {
+      "slug": "scholarship-support",
+      "icon": "fas fa-award",
+      "title": "Scholarship & Internship Linkage Support",
+      "summary": "Comprehensive support system connecting youth with educational scholarships, internship opportunities, and career pathways.",
+      "features": [
+        "Scholarship application assistance",
+        "Internship placement support",
+        "Career counseling and guidance",
+        "Application and interview preparation"
+      ],
+      "button_text": "Explore Opportunities",
+      "button_link": "/contact"
+    },
+    {
+      "slug": "mental-health",
+      "icon": "fas fa-heart",
+      "title": "Mental Health & Personal Growth Workshops",
+      "summary": "Interactive workshops and support sessions focusing on mental wellness, emotional intelligence, and personal development.",
+      "features": [
+        "Mental health awareness sessions",
+        "Stress management techniques",
+        "Peer support groups",
+        "Emotional intelligence training"
+      ],
+      "button_text": "Join Wellness Workshops",
+      "button_link": "/contact"
+    }
+  ]
+}
