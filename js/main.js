@@ -28,14 +28,61 @@
      * Header & mobile navigation
      * ------------------------------------------------------------------ */
     function initNavigation() {
-        var hamburger = document.getElementById('hamburger');
+        var toggle = document.getElementById('hamburger');
         var navMenu = document.getElementById('nav-menu');
-        if (!hamburger || !navMenu) return;
+        if (!toggle || !navMenu) return;
 
-        function closeMenu() {
-            navMenu.classList.remove('active');
-            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            hamburger.setAttribute('aria-expanded', 'false');
+        /* Wire the control exactly once. If this script is ever evaluated
+           twice, a second set of listeners would toggle the same class and the
+           menu would open and close again inside a single tap. */
+        if (toggle.getAttribute('data-nav-ready') === '1') return;
+        toggle.setAttribute('data-nav-ready', '1');
+
+        var header = document.querySelector('header');
+        var mobileQuery = window.matchMedia('(max-width: 768px)');
+
+        function isMobile() {
+            return mobileQuery.matches;
+        }
+
+        /* The panel is glued to the bottom edge of the header. The header is
+           as tall as the logo, so its height is measured rather than
+           hard-coded - otherwise the panel overlaps the button. */
+        function syncHeaderHeight() {
+            if (!header) return;
+            document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+        }
+
+        function setMenuState(open) {
+            navMenu.classList.toggle('active', open);
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+            document.body.classList.toggle('nav-open', open);
+        }
+
+        function focusQuietly(el) {
+            if (!el) return;
+            try {
+                el.focus({ preventScroll: true });
+            } catch (err) {
+                el.focus();
+            }
+        }
+
+        function openMenu() {
+            setMenuState(true);
+            focusQuietly(navMenu.querySelector('a'));
+        }
+
+        function closeMenu(refocus) {
+            var wasOpen = navMenu.classList.contains('active');
+            setMenuState(false);
+            document.querySelectorAll('.nav-item.open').forEach(function (item) {
+                item.classList.remove('open');
+                var link = item.querySelector('.nav-link');
+                if (link) link.setAttribute('aria-expanded', 'false');
+            });
+            if (wasOpen && refocus) focusQuietly(toggle);
         }
 
         /* Highlight the nav item matching the current clean URL */
@@ -50,74 +97,94 @@
             });
         })();
 
-        hamburger.setAttribute('role', 'button');
-        hamburger.setAttribute('tabindex', '0');
-        hamburger.setAttribute('aria-expanded', 'false');
+        /* A single click listener is all this control needs: browsers synthesise
+           click from a tap, so no touchstart/touchend/pointer handlers are
+           attached and nothing can fire twice for one tap.
 
-        hamburger.addEventListener('click', function () {
-            var open = navMenu.classList.toggle('active');
-            hamburger.innerHTML = open
-                ? '<i class="fas fa-times"></i>'
-                : '<i class="fas fa-bars"></i>';
-            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-
-        hamburger.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                hamburger.click();
+           The icon is swapped with CSS through aria-expanded. The button's
+           markup is deliberately NOT rewritten here - replacing innerHTML
+           detaches the very element that was tapped, and the "tap outside"
+           handler below would then see the tap as an outside click and close
+           the menu again in the same event. */
+        toggle.addEventListener('click', function () {
+            if (navMenu.classList.contains('active')) {
+                closeMenu(true);
+            } else {
+                openMenu();
             }
         });
 
         /* Toggle dropdowns on tap/click (works on mobile and desktop) */
         document.querySelectorAll('.nav-item').forEach(function (item) {
-            var toggle = item.querySelector('.nav-link');
+            var link = item.querySelector('.nav-link');
             var dropdown = item.querySelector('.dropdown');
-            if (!dropdown || !toggle) return;
+            if (!dropdown || !link) return;
 
-            toggle.addEventListener('click', function (e) {
-                var isMobile = window.matchMedia('(max-width: 768px)').matches;
-                if (isMobile) {
-                    // On mobile, tapping a parent opens its dropdown instead of navigating
-                    e.preventDefault();
-                    var isOpen = item.classList.contains('open');
-                    document.querySelectorAll('.nav-item.open').forEach(function (other) {
-                        if (other !== item) other.classList.remove('open');
-                    });
-                    item.classList.toggle('open', !isOpen);
-                }
+            link.setAttribute('aria-expanded', 'false');
+
+            link.addEventListener('click', function (e) {
+                if (!isMobile()) return;
+                // On mobile, tapping a parent opens its dropdown instead of navigating
+                e.preventDefault();
+                var isOpen = item.classList.contains('open');
+                document.querySelectorAll('.nav-item.open').forEach(function (other) {
+                    if (other === item) return;
+                    other.classList.remove('open');
+                    var otherLink = other.querySelector('.nav-link');
+                    if (otherLink) otherLink.setAttribute('aria-expanded', 'false');
+                });
+                item.classList.toggle('open', !isOpen);
+                link.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
             });
         });
 
         /* Close the menu after choosing any link (not dropdown parents) */
         navMenu.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function (e) {
+            link.addEventListener('click', function () {
                 var item = link.closest('.nav-item');
-                var isMobile = window.matchMedia('(max-width: 768px)').matches;
-                var isParentToggle = isMobile && item && item.querySelector('.dropdown') &&
+                var isParentToggle = isMobile() && item && item.querySelector('.dropdown') &&
                     link.classList.contains('nav-link');
                 if (isParentToggle) return;
-                closeMenu();
+                closeMenu(false);
             });
         });
 
-        /* Close when clicking outside the menu */
+        /* Close when tapping outside the menu. composedPath() is used so the
+           check still works even if the tap target is not the deepest element
+           (and never depends on the button's markup staying the same). */
         document.addEventListener('click', function (e) {
             if (!navMenu.classList.contains('active')) return;
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                closeMenu();
-            }
+            var path = e.composedPath ? e.composedPath() : [];
+            var insideMenu = navMenu.contains(e.target) || path.indexOf(navMenu) !== -1;
+            var insideToggle = toggle.contains(e.target) || path.indexOf(toggle) !== -1;
+            if (insideMenu || insideToggle) return;
+            closeMenu(false);
         });
 
-        /* Reset menu state when resizing back to desktop */
-        window.addEventListener('resize', function () {
-            if (!window.matchMedia('(max-width: 768px)').matches) {
-                closeMenu();
-                document.querySelectorAll('.nav-item.open').forEach(function (i) {
-                    i.classList.remove('open');
-                });
-            }
+        /* Escape closes the menu */
+        document.addEventListener('keydown', function (e) {
+            if (e.key !== 'Escape' && e.key !== 'Esc') return;
+            if (!navMenu.classList.contains('active')) return;
+            closeMenu(true);
         });
+
+        /* Reset menu state when the layout switches back to desktop */
+        function handleBreakpointChange() {
+            if (!isMobile()) {
+                closeMenu(false);
+            }
+            syncHeaderHeight();
+        }
+        if (mobileQuery.addEventListener) {
+            mobileQuery.addEventListener('change', handleBreakpointChange);
+        } else if (mobileQuery.addListener) {
+            mobileQuery.addListener(handleBreakpointChange);
+        }
+        window.addEventListener('resize', syncHeaderHeight);
+        if (window.ResizeObserver && header) {
+            new window.ResizeObserver(syncHeaderHeight).observe(header);
+        }
+        syncHeaderHeight();
     }
 
     /* ------------------------------------------------------------------

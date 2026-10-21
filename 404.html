@@ -296,9 +296,41 @@
 
         .hamburger {
             display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            padding: 0;
+            border: 0;
+            border-radius: 10px;
+            background: transparent;
             color: var(--primary-blue);
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .hamburger:focus-visible {
+            outline: 2px solid var(--accent-pink);
+            outline-offset: 2px;
+        }
+
+        /* Both icons stay in the DOM at all times and only their visibility
+           changes. The button's markup is never rewritten, so the element the
+           user tapped is never detached from the document. */
+        .hamburger .icon-close {
+            display: none;
+        }
+
+        .hamburger[aria-expanded="true"] .icon-bars {
+            display: none;
+        }
+
+        .hamburger[aria-expanded="true"] .icon-close {
+            display: inline-block;
         }
 
         /* Hero Section with Slider */
@@ -744,24 +776,45 @@
 
         @media (max-width: 768px) {
             .hamburger {
-                display: block;
+                display: inline-flex;
+                position: relative;
+                z-index: 1002;
             }
 
             .nav-menu {
                 position: fixed;
-                top: 70px;
-                left: -100%;
+                top: var(--header-h, 120px);
+                left: 0;
                 width: 100%;
-                height: calc(100vh - 70px);
+                height: calc(100vh - var(--header-h, 120px));
+                height: calc(100dvh - var(--header-h, 120px));
                 background-color: var(--white);
                 flex-direction: column;
                 align-items: center;
                 padding-top: 50px;
-                transition: var(--transition);
+                padding-bottom: 30px;
+                overflow-y: auto;
+                overscroll-behavior: contain;
+                -webkit-overflow-scrolling: touch;
+                z-index: 1001;
+                visibility: hidden;
+                opacity: 0;
+                pointer-events: none;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
             }
 
             .nav-menu.active {
-                left: 0;
+                visibility: visible;
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateX(0);
+            }
+
+            /* The panel covers the page while it is open, so the page behind
+               it must not scroll. */
+            body.nav-open {
+                overflow: hidden;
             }
 
             .nav-item {
@@ -781,10 +834,6 @@
 
             .nav-item.open .dropdown {
                 display: block;
-            }
-
-            .nav-menu {
-                overflow-y: auto;
             }
 
             .hero h1 {
@@ -852,9 +901,11 @@
     <header>
         <div class="container header-container">
             <a href="/" class="logo"><img src="/images/YMAI.png"> </a>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
+            <button type="button" class="hamburger" id="hamburger" aria-controls="nav-menu"
+                aria-expanded="false" aria-label="Open navigation menu">
+                <i class="fas fa-bars icon-bars" aria-hidden="true"></i>
+                <i class="fas fa-times icon-close" aria-hidden="true"></i>
+            </button>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
                     <a href="/" class="nav-link active">Home</a>
