@@ -68,9 +68,13 @@
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
+# Photos are replaced in place, under the same file name, so a cached copy
+# can be the previous photo. The build gives every image URL a content
+# version token (/images/x.jpg?v=...), which makes a replaced photo a new
+# URL, and revalidation makes sure nothing stale is ever handed out.
 [[headers]]
   for = "/images/*"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=0, must-revalidate"

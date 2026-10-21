@@ -63,6 +63,31 @@ Open **http://localhost:8000**. Clean URLs work locally too.
 > only works once the site is deployed and the OAuth provider is installed
 > (see step 3 below). Use the local preview for the public pages.
 
+### Replacing a photo (same file name)
+
+Photos live in `images/` and are referenced by name everywhere, so replacing
+one means **overwriting the file in `images/` with the new photo under the
+same name** — no code change is needed.
+
+```bash
+# 1. drop the new photo over the old one, same name
+cp ~/new-photo.jpg images/director.jpg
+
+# 2. build and check that the build publishes the new photo
+bash scripts/build.sh
+python3 scripts/verify-images.py
+
+# 3. deploy
+netlify deploy --dir=dist --prod
+```
+
+The build gives every published image URL a version token taken from the
+content of the file itself (`/images/director.jpg?v=e9156cd554`). A replaced
+photo therefore becomes a new URL, so visitors fetch the new photo straight
+away instead of a week-old cached copy, while an unchanged photo keeps its
+URL and stays cached. The sources in `images/` and the CMS always keep clean
+paths such as `/images/director.jpg`; only the published URLs are versioned.
+
 ---
 
 ## Deploy to Netlify (free) — step by step
