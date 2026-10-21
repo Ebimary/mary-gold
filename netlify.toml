@@ -65,16 +65,25 @@
     X-Robots-Tag = "noindex"
     Cache-Control = "no-cache, no-store, must-revalidate"
 
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
 # Photos are replaced in place, under the same file name, so a cached copy
-# can be the previous photo. The build gives every image URL a content
+# can be the previous photo. The build gives every photo URL a content
 # version token (/images/x.jpg?v=...), which makes a replaced photo a new
-# URL, and revalidation makes sure nothing stale is ever handed out.
+# URL, so a photo that is referenced without a token (a fallback inside a
+# script) is revalidated on every request and can never be stale.
 [[headers]]
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Stylesheets and scripts are replaced in place as well, so they carry a
+# content version token too and can be cached for a year: a changed file
+# is a new URL, and the pages that point at it are never cached.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

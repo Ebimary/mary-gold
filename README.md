@@ -75,18 +75,22 @@ cp ~/new-photo.jpg images/director.jpg
 
 # 2. build and check that the build publishes the new photo
 bash scripts/build.sh
-python3 scripts/verify-images.py
+python3 scripts/verify-assets.py
 
 # 3. deploy
 netlify deploy --dir=dist --prod
 ```
 
-The build gives every published image URL a version token taken from the
-content of the file itself (`/images/director.jpg?v=e9156cd554`). A replaced
-photo therefore becomes a new URL, so visitors fetch the new photo straight
-away instead of a week-old cached copy, while an unchanged photo keeps its
-URL and stays cached. The sources in `images/` and the CMS always keep clean
-paths such as `/images/director.jpg`; only the published URLs are versioned.
+The build gives every published photo, stylesheet and script a version
+token taken from the content of the file itself
+(`/images/director.jpg?v=e9156cd554`). A replaced photo therefore becomes
+a new URL, so visitors fetch the new photo straight away instead of a
+week-old cached copy, while an unchanged photo keeps its URL and stays
+cached. The sources in `images/` and the CMS always keep clean paths such
+as `/images/director.jpg`; only the published URLs are versioned.
+
+The same is true for a changed stylesheet or script: `assets/` and `js/`
+are versioned and cached for a year, because a changed file is a new URL.
 
 ---
 

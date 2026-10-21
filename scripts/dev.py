@@ -31,6 +31,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=ROOT, **kwargs)
 
+    def end_headers(self):
+        # Photos and scripts are replaced in place while developing, so the
+        # local server must never let the browser keep a copy of one.
+        self.send_header("Cache-Control", "no-store")
+        super().end_headers()
+
     def do_GET(self):
         path = urlparse(self.path).path
 

@@ -27,14 +27,19 @@ for dir in admin assets content images js uploads; do
     fi
 done
 
-# Photos are replaced in place under the same file name, so the published
-# URLs get a content-derived version token. Without it a browser keeps
-# serving the previous photo from its cache for up to a week.
+# Photos, stylesheets and scripts are replaced in place under the same
+# file name, so the published URLs get a content-derived version token.
+# Without it a browser keeps serving the previous file from its cache for
+# up to a week.
 if command -v python3 >/dev/null 2>&1; then
     python3 "${ROOT}/scripts/version-assets.py" "${DIST}"
+
+    # The build is not complete unless every published reference points at
+    # a file that exists, matches its source and carries the right token.
+    python3 "${ROOT}/scripts/verify-assets.py" "${DIST}"
 else
-    echo "WARNING: python3 not found - image URLs were published without" \
-         "version tokens and browsers may keep showing old photos." >&2
+    echo "WARNING: python3 not found - asset URLs were published without" \
+         "version tokens and browsers may keep showing old files." >&2
 fi
 
 echo "Built static site -> ${DIST}"
