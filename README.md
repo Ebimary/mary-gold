@@ -51,7 +51,7 @@ You edit in /admin  ──►  Decap CMS  ──►  Git commit (content/*.json 
 ## Run locally
 
 ```bash
-cd mary-yaim-web
+cd mary-ybiytc-web
 python3 scripts/dev.py          # http://localhost:8000
 # or a custom port:
 python3 scripts/dev.py 5000
@@ -67,12 +67,14 @@ Open **http://localhost:8000**. Clean URLs work locally too.
 
 ## Deploy to Netlify (free) — step by step
 
+**Live site:** <https://marygoldtech-ybiytc.netlify.app> ·
+**Admin panel:** <https://marygoldtech-ybiytc.netlify.app/admin/>
+
 ### 1. Put the project on GitHub
 ```bash
-git init
+git init -b main
 git add .
 git commit -m "Mary Gold site with CMS"
-git branch -M main
 git remote add origin https://github.com/<you>/mary-gold.git
 git push -u origin main
 ```
@@ -80,9 +82,15 @@ git push -u origin main
 ### 2. Create the Netlify site
 1. Go to https://app.netlify.com → **Add new site → Import an existing project**.
 2. Connect GitHub and pick your repo.
-3. Build settings: **leave the build command empty**, publish directory = `.`
-   (already set in `netlify.toml`).
+3. Build settings are read from `netlify.toml`:
+   - build command = `bash scripts/build.sh`
+   - publish directory = `dist`
 4. Deploy.
+
+> Deploying from the CLI instead? The site is already linked:
+> ```bash
+> netlify deploy --prod
+> ```
 
 ### 3. Enable the Admin login (Netlify Identity)
 1. In Netlify: **Site configuration → Identity → Enable Identity**.
@@ -92,8 +100,13 @@ git push -u origin main
    (e.g. `onweebi12@gmail.com`).
 5. Open the invite email and set your password.
 
+> **Note:** Netlify has deprecated Git Gateway. It still works for sites that
+> already have it enabled, but if you hit problems, switch the backend in
+> `admin/config.yml` to `github` and give editors write access to the repo
+> instead (see [Decap backends](https://decapcms.org/docs/choosing-a-backend/)).
+
 ### 4. Log in and edit
-1. Visit `https://<your-site>.netlify.app/admin/`.
+1. Visit `https://marygoldtech-ybiytc.netlify.app/admin/`.
 2. Log in with the email you invited.
 3. You now have the full admin panel:
    - **Site Settings** — logo, phone, WhatsApp, email, address, socials, footer.
@@ -166,7 +179,10 @@ Images uploaded via the CMS are stored in `uploads/`. The site logo is set in
 ├── uploads/                # CMS-uploaded images
 ├── images/                 # original images
 ├── js/main.js              # shared interactions (menu, sliders, forms, modals)
-├── scripts/dev.py          # local dev server with clean URLs
+├── scripts/
+│   ├── build.sh            # assembles the deployable site into dist/
+│   └── dev.py              # local dev server with clean URLs
+├── dist/                   # build output (published, git-ignored)
 └── netlify.toml            # Netlify config (clean URLs, admin, headers)
 ```
 

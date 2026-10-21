@@ -4,8 +4,8 @@ backend:
 
 # Netlify Identity widget handles login on the public site.
 logo_url: /images/YMAI.png
-site_url: https://marygold.org
-display_url: https://marygold.org
+site_url: https://marygoldtech-ybiytc.netlify.app
+display_url: https://marygoldtech-ybiytc.netlify.app
 publish_mode: editorial_workflow
 
 media_folder: uploads
