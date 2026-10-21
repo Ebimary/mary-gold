@@ -96,7 +96,9 @@
   function renderValues(items) {
     M.each(".values-grid", function (grid) {
       grid.innerHTML = items.map(function (v) {
-        return '<div class="value-card"><h4>' + esc(v.title) + "</h4><p>" + esc(v.text) + "</p></div>";
+        return '<div class="value-card">' +
+          (v.icon ? '<div class="value-icon"><i class="' + esc(v.icon) + '"></i></div>' : "") +
+          "<h4>" + esc(v.title) + "</h4><p>" + esc(v.text) + "</p></div>";
       }).join("");
     });
   }

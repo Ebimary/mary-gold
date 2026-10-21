@@ -190,6 +190,36 @@ collections:
               - { label: Photo, name: image, widget: image }
               - { label: "Biography (rich text)", name: bio, widget: markdown }
 
+  # ------------------------------------------------------- OBJECTIVES & VALUES
+  - name: objectives
+    label: "Strategic Objectives"
+    files:
+      - name: list
+        label: "All Objectives"
+        file: content/pages/objectives.json
+        fields:
+          - label: Objectives
+            name: items
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+
+  - name: values
+    label: "Core Values"
+    files:
+      - name: list
+        label: "All Core Values"
+        file: content/pages/values.json
+        fields:
+          - label: Values
+            name: items
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: "Icon (Font Awesome class)", name: icon, widget: string, hint: "e.g. fas fa-shield-alt" }
+              - { label: Text, name: text, widget: text }
+
   # ---------------------------------------------------------------- PROGRAMS
   - name: programs
     label: "Programs"

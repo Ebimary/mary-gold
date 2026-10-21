@@ -1,10 +1,10 @@
 {
   "items": [
-    { "title": "Integrity", "text": "We maintain honesty, transparency, and ethical standards in all our actions and decisions." },
-    { "title": "Service", "text": "We are committed to serving youth and communities with dedication, compassion, and excellence." },
-    { "title": "Empathy", "text": "We listen, understand, and respond to the unique needs and perspectives of every young person." },
-    { "title": "Collaboration", "text": "We believe in the power of partnerships and work together to achieve greater impact." },
-    { "title": "Innovation", "text": "We embrace creative approaches and continuously seek better ways to serve youth." },
-    { "title": "Purpose-driven Leadership", "text": "We lead with vision, inspire action, and empower others to create positive change." }
+    { "title": "Integrity", "icon": "fas fa-shield-alt", "text": "We maintain honesty, transparency, and ethical standards in all our actions and decisions." },
+    { "title": "Service", "icon": "fas fa-hands-helping", "text": "We are committed to serving youth and communities with dedication, compassion, and excellence." },
+    { "title": "Empathy", "icon": "fas fa-hand-holding-heart", "text": "We listen, understand, and respond to the unique needs and perspectives of every young person." },
+    { "title": "Collaboration", "icon": "fas fa-people-carry", "text": "We believe in the power of partnerships and work together to achieve greater impact." },
+    { "title": "Innovation", "icon": "fas fa-lightbulb", "text": "We embrace creative approaches and continuously seek better ways to serve youth." },
+    { "title": "Purpose-driven Leadership", "icon": "fas fa-flag", "text": "We lead with vision, inspire action, and empower others to create positive change." }
   ]
 }
